@@ -1,0 +1,23 @@
+.fundoCor2 {
+  margin-top: 10px;
+  font-size: 1.5em;
+  display: inline-block;
+  position: relative;
+  cursor: default;
+  z-index: 1;  
+  border-radius: 0px;
+  padding: 1px 8px;
+  animation: fundoCor2Change 500ms alternate infinite;
+}
+
+
+@keyframes fundoCor2Change {
+  from {
+    background-color: transparent;
+  }
+  to {
+    color: #fff;
+    background-color: #050;
+    border-radius: 10px;
+  }
+}

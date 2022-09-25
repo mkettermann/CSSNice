@@ -1,0 +1,41 @@
+.ip-form-group{
+  position: relative;
+  margin: 10px 0;
+}
+
+.ip-form-group input{
+  width: 100%;
+  padding: 4px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  background-color: transparent;
+  color:#fff;
+  transition: 0.2s all ease;
+}
+
+.ip-form-group input:focus{
+  border-color: #FF0;
+}
+
+.ip-form-group input::placeholder{
+  color: transparent;
+}
+
+.ip-form-group .ip-form-label{
+  position: absolute;
+  color:#888;
+  top: 6px;
+  left: 5px;
+  padding: 0 6px;
+  font-size: 1.3em;
+  pointer-events: none;
+  transition: 0.2s all ease;
+}
+
+.ip-form-group input:focus + .ip-form-label,
+  .ip-form-group input:not(:placeholder-shown) + .ip-form-label{
+  transform: translate(5px,-18px)scale(0.8);
+  background-color: #020;
+  color:#8F8;
+}

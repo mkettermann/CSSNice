@@ -1,0 +1,26 @@
+.fundoEsticaCor {
+  margin-top: 10px;
+  font-size: 1.5em;
+  display: inline-block;
+  position: relative;
+  cursor: default;
+  z-index: 1;
+  padding: 1px 10px;
+}
+
+.fundoEsticaCor::before{
+  content: "";
+  background-color: #000;
+  display: block;
+  position: absolute;
+  inset: 0%;
+  z-index: -1;
+  transition: transform 500ms ease;
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+.fundoEsticaCor:hover::before{
+  transform: scaleX(1);
+  transform-origin: left;
+}

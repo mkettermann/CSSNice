@@ -1,0 +1,113 @@
+.fundoDoMar{
+  background-color: navy;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+}
+.fundoMarUl{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.fundoMarUl li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.3);
+  bottom: -150px;
+  animation: bolhaMergulhando 10s infinite linear;
+}
+
+.fundoMarUl li:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  left: 25%;
+  animation-delay: 0s;
+}
+
+.fundoMarUl li:nth-child(2) {
+  width: 20px;
+  height: 20px;
+  left: 95%;
+  animation-delay: 1s;
+}
+
+.fundoMarUl li:nth-child(3) {
+  width: 70px;
+  height: 70px;
+  left: 75%;
+  animation-delay: 2s;
+}
+
+.fundoMarUl li:nth-child(4) {
+  width: 30px;
+  height: 30px;
+  left: 10%;
+  animation-delay: 3s;
+}
+
+.fundoMarUl li:nth-child(5) {
+  width: 40px;
+  height: 40px;
+  left: 60%;
+  animation-delay: 4s;
+}
+
+.fundoMarUl li:nth-child(6) {
+  width: 90px;
+  height: 90px;
+  left: 84%;
+  animation-delay: 5s;
+}
+
+.fundoMarUl li:nth-child(7) {
+  width: 50px;
+  height: 50px;
+  left: 50%;
+  animation-delay: 6s;
+}
+
+.fundoMarUl li:nth-child(8) {
+  width: 100px;
+  height: 100px;
+  left: 40%;
+  animation-delay: 7s;
+}
+
+
+@keyframes bolhaMergulhando {
+  0%{
+    transform: skew(3deg) translateX(0px) translateY(0px) rotate(-90deg);
+    opacity: 0.1;
+    border-radius: 40%;
+    background-color: lightseagreen;
+    border: 6px solid rgba(0, 0, 120, 0.4);
+  }
+  25%{
+    transform: skew(-3deg) translateX(-5px) translateY(-250px) rotate(0deg);
+    border: 6px single rgba(0, 0, 255, 0.4);
+    opacity: 0.2;
+  }
+  50%{
+    transform: skew(3deg) translateX(0px) translateY(-500px) rotate(90deg);
+    border-radius: 50%;
+    border: 6px double rgba(180, 230, 255, 0.5);
+  }
+  75%{
+    transform: skew(-3deg) translateX(5px) translateY(-750px) rotate(0deg);    
+    opacity: 0.1;
+  }
+  100%{
+    transform: skew(3deg) translateX(0px) translateY(-1100px) rotate(-90deg);
+    opacity: 0;
+    border-radius: 40%;
+    background-color: lightblue;
+    border: 18px double rgba(180, 230, 255, 1);
+  }
+}

@@ -1,0 +1,72 @@
+.t3d_u {
+  display: flex;
+  list-style: none;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.t3d {
+  font-size: 80px;
+  color: #6f6;
+  text-shadow:  #898 1px 1px 1px,
+    #898 1px 2px 1px,
+    #898 1px 3px 1px,
+    #898 1px 4px 1px,
+    #898 1px 5px 1px,
+    #898 1px 6px 1px,
+    #898 1px 7px 1px,
+    #898 1px 8px 1px,
+    #898 1px 9px 1px,
+    #898 1px 10px 1px,
+    #898 1px 11px 1px,
+    #898 1px 12px 1px,
+    rgba(0, 0, 0, 0.6) 1px 18px 6px,
+    rgba(0, 0, 0, 0.6) 1px 22px 10px,
+    rgba(0, 0, 0, 0.6) 1px 26px 35px,
+    rgba(0, 0, 0, 0.6) 1px 30px 65px;
+    animation: texto3dani 1s ease-in-out infinite;
+    animation-delay: calc(.1s * var(--t3di));
+}
+
+@keyframes texto3dani {
+  0%, 100% {
+    margin-top: 0;
+    text-shadow: 
+      #898 1px 1px 1px,
+      #898 1px 2px 1px,
+      #898 1px 3px 1px,
+      #898 1px 4px 1px,
+      #898 1px 5px 1px,
+      #898 1px 6px 1px,
+      #898 1px 7px 1px,
+      #898 1px 8px 1px,
+      #898 1px 9px 1px,
+      #898 1px 10px 1px,
+      #898 1px 11px 1px,
+      #898 1px 12px 1px,
+      rgba(0, 0, 0, 0.6) 1px 18px 6px,
+      rgba(0, 0, 0, 0.6) 1px 22px 10px,
+      rgba(0, 0, 0, 0.6) 1px 26px 35px,
+      rgba(0, 0, 0, 0.6) 1px 30px 65px;
+  }
+  50% {
+    margin-top: -20px;
+    text-shadow: 
+      #898 1px 1px 1px,
+      #898 1px 2px 1px,
+      #898 1px 3px 1px,
+      #898 1px 4px 1px,
+      #898 1px 5px 1px,
+      #898 1px 6px 1px,
+      #898 1px 7px 1px,
+      #898 1px 8px 1px,
+      #898 1px 9px 1px,
+      #898 1px 10px 1px,
+      #898 1px 11px 1px,
+      #898 1px 12px 1px,
+      rgba(0, 0, 0, 0.6) 1px 38px 26px,
+      rgba(0, 0, 0, 0.6) 1px 42px 30px,
+      rgba(0, 0, 0, 0.6) 1px 46px 65px,
+      rgba(0, 0, 0, 0.6) 1px 50px 95px;
+  }
+}

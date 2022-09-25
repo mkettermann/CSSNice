@@ -1,0 +1,74 @@
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #000;
+  color: #0f0;
+  animation: fundo_gradiente 4s ease-in-out alternate infinite;
+  background: linear-gradient(-45deg, #000, #030, #000, #030, #000) no-repeat;
+  background-size: 300% 300%;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fundo_gradiente {
+  from {
+    background-position: 0 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #000;
+  max-height: 35px;
+  font-weight: 900;
+  font-family: monospace;
+  background-color: rgba(0, 180, 0, 0.8);
+  border: 5px double #030;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+h2:hover {
+  background-color: transparent;
+  border: 5px dotted #050;
+  outline: 2px dashed #aa0;
+  color: #bfb;
+  cursor: default;
+  text-shadow: -1px 0px 5px #000, 0px 1px 5px #000, 1px 0px 5px #000,
+    0px -1px 5px #000, 0px 0px 10px #000, 0px 0px 10px #000, 0px 0px 10px #000;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  width: 100%;
+  padding: 5px;
+}
+
+.exemplo {
+  padding: 5px;
+  text-align: center;
+  justify-content: center;
+  transition: all 1000ms;
+  aspect-ratio: 1/1;
+  width: 100%;
+  min-width: 230px;
+  color: #afa;
+  position: relative;
+  border: 1px solid #141;
+  overflow: hidden;
+}
+
+.e1 {
+  background-image: url("../../JogoDaMemoria/images/back.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

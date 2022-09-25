@@ -1,0 +1,31 @@
+.fundoCor1 {
+  margin-top: 10px;
+  font-size: 1.5em;
+  display: inline-block;
+  position: relative;
+  cursor: default;
+  z-index: 1;
+
+}
+
+.fundoCor1::before {
+  content: "";
+  background-color: darkgreen;
+  display: block;
+  position: absolute;
+  inset: 0%;
+  z-index: -1;
+  transition: transform 1000ms ease;
+  border-radius: 100%;
+  transform: rotate(0deg) scaleX(0);
+}
+
+
+.fundoCor1:hover::before {
+  transform: rotate(180deg) scaleX(1.2);
+  border-radius: 1em; 
+}
+
+.fundoCor1::after {
+  transform: rotate(360deg) scaleX(0);
+}

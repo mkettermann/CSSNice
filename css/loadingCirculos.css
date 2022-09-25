@@ -1,0 +1,49 @@
+.loadingCirculos{
+  margin-top: 10px;
+
+  width: 80px;
+  height: 80px;
+  color: #5f5;
+  border: transparent double 5px;
+  border-left-color: #0c0;
+  border-top-color: #0c0;
+  border-radius: 100%;
+  position: absolute;
+  animation: loadingCirculosAni 4000ms linear infinite;
+}
+
+.loadingCirculos::before{
+  border: transparent dotted 3px;
+  border-left-color: #5f5;
+  border-radius: 100%;
+  position: absolute;
+  content: '';
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  animation: loadingCirculosAni 2s linear infinite;
+}
+
+.loadingCirculos::after{
+  border: transparent dashed 1px;
+  border-left-color: #cfc;
+  border-top-color: #cfc;
+  border-radius: 100%;
+  position: absolute;
+  content: '';
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  animation: loadingCirculosAni 1s linear infinite;
+}
+
+@keyframes loadingCirculosAni {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
