@@ -1,5 +1,1 @@
-//GET https://reqres.in/api/users
-
-//GET https://reqres.in/api/users/1
-
-OPTIONS  https://reqres.in/api/users/1
+GET https://camposdealer.dev/Sites/TesteAPI/venda
