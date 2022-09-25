@@ -1,0 +1,98 @@
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px 50px;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    margin: 0 0 30px;
+    border-radius: 5px;
+    background-color: rgba(180, 255, 180, 0.5);
+    font-size: 1.2em;
+}
+
+.player {
+    font-size: 1.5em;
+    font-family: system-ui, sans-serif;
+    display: inline-block;
+    position: relative;
+    cursor: default;
+    z-index: 1;
+}
+
+.player::before{
+    content: "";
+    background-color: darkgreen;
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transition: transform 300ms ease;
+    transform-origin: right;
+    transform: scaleX(0);
+}
+.player:hover::before{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: #fff;
+    position: relative;
+    transition: all 800ms;
+    transform-style: preserve-3d;
+    border: 2px solid darkgreen;
+    border-radius: 10px;
+
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    transition: all 400ms ease;
+}
+
+.front {
+    transform: rotateY(180deg);
+}
+
+.back {
+    background-image: url('../images/back.png');
+    backface-visibility: hidden;
+}
+
+.revelarcard {
+    transform: rotateY(180deg);
+}
+
+.cartaDesativada{
+    filter: saturate(0);
+    opacity: 0.5;
+}
