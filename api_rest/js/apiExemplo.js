@@ -2,48 +2,33 @@
  * OPERAÇÕES API: GET
  */
 // CABECALHOS
+
+// $request->setHeaders(array(
+// 	'content-type' => 'application/json',
+// 	'authorization' => 'Basic '. base64_encode("user:password"),
+// 	'X-App-Trafegus' => 777
+// ));
+
 var endereco =
 	"http://187.32.116.25/ws_rest/public/api/viagem?UltCodigo=480295";
 var hCabecalhos = new Headers();
-hCabecalhos.append("Authorization", "Basic d3N2YWxpZGFjYW86d3N2YWxpZGExMjM=");
 
-// GET XML com 200 SEM HEADER
-var reqGetUser = new XMLHttpRequest();
-reqGetUser.onreadystatechange = function () {
-	if (this.status == 200) {
-		//var dadosArray = JSON.parse(this.responseText);
-		//console.log(dadosArray.data);
-		document.querySelector(".divGet").innerHTML = this.responseText;
-	}
-};
-reqGetUser.open("GET", endereco, true);
-reqGetUser.setRequestHeader(
+hCabecalhos.append(
 	"Authorization",
 	"Basic d3N2YWxpZGFjYW86d3N2YWxpZGExMjM="
+	//"BASIC ".base64_encode("wsvalidacao:wsvalida123")
 );
-reqGetUser.send();
-
-// GET XML onload SEM HEADER
-var reqGetUser1 = new XMLHttpRequest();
-reqGetUser1.open("GET", endereco, true);
-reqGetUser1.onload = function () {
-	document.querySelector(".divGet1").innerHTML = reqGetUser1.responseText;
-};
-reqGetUser1.send();
-
-// GET fetch() json()
 var requestOptions = {
 	method: "GET",
 	headers: hCabecalhos,
-	redirect: "follow",
 };
 fetch(endereco, requestOptions)
 	.then((response) => response.text())
 	.then((dados) => {
 		if (dados.length > 0) {
-			document.querySelector(".divGet2").innerHTML = dados;
+			document.querySelector(".divGet").innerHTML = dados;
 		} else {
-			document.querySelector(".divGet2").innerHTML =
+			document.querySelector(".divGet").innerHTML =
 				"CONTEUDO VAZIO - CHECK CONSOLE";
 		}
 	})
