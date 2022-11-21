@@ -2,8 +2,9 @@
  * OPERAÇÕES API: GET
  */
 // CABECALHOS
-var endereco =
-	"http://187.32.116.25/ws_rest/public/api/viagem?UltCodigo=480295";
+var endereco = "";
+//endereco = "http://187.32.116.25/ws_rest/public/api/viagem?UltCodigo=480295";
+endereco = "http://10.1.150.8/Gerenciador/Sistemas/Servidor/ListaServidores";
 var hCabecalhos = new Headers();
 hCabecalhos.append("Authorization", "Basic d3N2YWxpZGFjYW86d3N2YWxpZGExMjM=");
 
