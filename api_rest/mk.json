@@ -1,0 +1,32 @@
+[
+	{
+		"Id": 1,
+		"Nome": "Marcos",
+		"Cidade": "São José dos Pinhais",
+		"Estado": "PR"
+	},
+	{
+		"Id": 2,
+		"Nome": "Lucas",
+		"Cidade": "Araucária",
+		"Estado": "PR"
+	},
+	{
+		"Id": 3,
+		"Nome": "Sérgio",
+		"Cidade": "Curitiba",
+		"Estado": "PR"
+	},
+	{
+		"Id": 4,
+		"Nome": "Filipe",
+		"Cidade": "Curitiba",
+		"Estado": "PR"
+	},
+	{
+		"Id": 5,
+		"Nome": "Troy",
+		"Cidade": "Niterói",
+		"Estado": "RJ"
+	}
+]
