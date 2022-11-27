@@ -4,11 +4,34 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="../bootstrap/bootstrap.min.css" rel="stylesheet" />
-		<script src="jquery-3.6.1.min.js"></script>
+		<script src="./js/jquery-3.6.1.min.js"></script>
 		<title>JQUERY MK</title>
 	</head>
 	<body>
 		<h2 class="text-center shadow p-3">MK JQuery Zone</h2>
-		<nav></nav>
+		<nav>
+			<li>Item A</li>
+			<li>Item B</li>
+			<li>Item C</li>
+			<li>Item D</li>
+			<li>Item E</li>
+			<li>Item F</li>
+			<li>Item G</li>
+			<li>Item H</li>
+		</nav>
+		<div>Total de Itens na lista acima: <span id="totalItens">-</span></div>
+		<script>
+			var $nav = $("nav");
+			var $listas = $nav.find("li");
+			$("#totalItens").html($listas.length);
+			$listas.css("background", "#ccc");
+			$nav.css("padding-top", "10px");
+
+			$listas
+				.animate({ width: "-=100" }, 500)
+				.fadeOut()
+				.fadeIn("slow")
+				.animate({ width: "+=100" }, 500);
+		</script>
 	</body>
 </html>
