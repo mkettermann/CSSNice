@@ -1,0 +1,23 @@
+@startuml Teste
+  class Cliente {
+    *int IdCliente
+    +String Nome
+  }
+
+  class Produto {
+    *int IdProduto
+    +String Nome
+    +long Valor
+    }
+
+  class Venda {
+    *int Id
+    -int IdCliente
+    -int IdProduto
+    +int Quantidade
+    +BuscarReferencia(int Id)
+  }
+
+  Cliente --> Venda
+  Produto --> Venda
+@enduml

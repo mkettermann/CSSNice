@@ -1,0 +1,6 @@
+[
+	{ "IdCliente": 1, "Nome": "Cli1" },
+	{ "IdCliente": 2, "Nome": "Cli2" },
+	{ "IdCliente": 3, "Nome": "Cli3" },
+	{ "IdCliente": 4, "Nome": "Cli4" }
+]
