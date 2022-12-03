@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="./css/texto3d.css" />
 		<link rel="stylesheet" href="./css/loadingCirculos.css" />
 		<link rel="stylesheet" href="./css/fundoDoMar.css" />
+		<link rel="stylesheet" href="./css/jqueryCaixa.css" />
 		<link rel="icon" type="image/x-icon" href="./img/mkico.jpg" />
 		<script src="./jquery/js/jquery-3.6.1.min.js"></script>
 		<script src="./bootstrap/bootstrap.bundle.min.js"></script>
@@ -23,56 +24,108 @@
 		<main>
 			<div class="grid">
 				<div class="exemplo">
+					<h2>JQ</h2>
+					<div>Hex Cor: <span id="idHexCorJQ"></span></div>
+					<div class="text-center">
+						<input type="color" id="inputCor" value="#00FF00" />
+					</div>
+					<div>
+						<button id="idFusao" class="botaoBordaCor fs-6 p-1">
+							FUSÃO cores de JS e JQ
+						</button>
+					</div>
+					<script defer>
+						$(document).ready(() => {
+							$("#inputCor").on("change", () => {
+								$("#idHexCorJQ").text($("#inputCor").val());
+							});
+							$("#idFusao").on("click", () => {
+								$("body").append(
+									"<div id='idCaixa' class='temp'><span id='idCaixaInt'></span></span></div>"
+								);
+
+								$("#idCaixa").animate(
+									{
+										bottom: 20,
+										opacity: 1,
+										left: "30%",
+										width: "40%",
+										height: "40%",
+									},
+									{
+										duration: 1000,
+										easing: "swing",
+										complete: () => {
+											let vHexCorJQ = $("#inputCor").val();
+											let vHexCorJS = $("#idAcontece").css("background-color");
+											vHexCorJS = Rgb2Hex(vHexCorJS);
+											$("#idHexCorJQ").append(
+												"<span class='idCaixaMove' style='background-color: " +
+													vHexCorJQ +
+													"'></span>"
+											);
+											$("#idHexCorJS").append(
+												"<span class='idCaixaMove' style='background-color: " +
+													vHexCorJS +
+													"'></span>"
+											);
+											let destino = $("#idCaixa");
+											let xDestino =
+												destino.offset().left +
+												destino.width() / 2 -
+												$("#inputCor").width() / 2;
+											let yDestino =
+												destino.offset().top +
+												destino.height() / 2 -
+												$("#inputCor").width() / 2;
+											$(".idCaixaMove").animate(
+												{
+													left: xDestino,
+													top: yDestino,
+												},
+												{
+													duration: 1000,
+													complete: () => {
+														$(".idCaixaMove").remove();
+
+														let novaCor = CorMisturada(vHexCorJQ, vHexCorJS);
+														console.log(novaCor);
+														$("#idCaixa").css("background", novaCor);
+														$("#idCaixa").animate(
+															{
+																opacity: 0,
+															},
+															{
+																duration: 1000,
+																complete: () => {
+																	$(".temp").remove();
+																},
+															}
+														);
+													},
+												}
+											);
+										},
+									}
+								);
+							});
+						});
+					</script>
+					<a class="fundoEsticaCor" href="./jquery/">Exemplos JQuery</a>
+				</div>
+
+				<div class="exemplo">
 					<h2>JS</h2>
+					<div>Hex Cor: <span id="idHexCorJS"></span></div>
 					<div id="idAcontece">Valor Inicial</div>
 					<button onclick="fMudaCor()" class="botaoBordaCor fs-6">
 						MudaCor
 					</button>
 					<div id="idJson">Valor Inicial</div>
 					<button onclick="fMostraJson()" class="botaoBordaCor fs-6">
-						Json
+						To Json
 					</button>
-					<script defer>
-						const iAcontece = document.getElementById("idAcontece");
-						iAcontece.innerHTML = "Arrow Func";
-
-						const fMudaCor = () => {
-							iAcontece.style.backgroundColor = CorAleatoria();
-							console.info("Cor: " + iAcontece.style.backgroundColor);
-						};
-						const CorAleatoria = () => {
-							let letters = "0123456789ABCDEF";
-							let color = "#";
-							for (let i = 0; i < 6; i++) {
-								color += letters[Math.floor(Math.random() * 16)];
-							}
-							return color;
-						};
-					</script>
-					<script defer>
-						const iJson = document.getElementById("idJson");
-						let letterM = "M";
-						let letterK = "K";
-						const meuNome = `${letterM}${letterK}`;
-						let jsonA = { Nome: meuNome, Pontos: 9 };
-						let jsonB = { ...jsonA, Pontos: jsonA.Pontos ** 2 };
-
-						const jsonCombo = [jsonA, jsonB];
-
-						iJson.innerHTML = jsonCombo;
-						const fMostraJson = () => {
-							iJson.innerHTML = JSON.stringify(jsonCombo);
-							console.log(jsonCombo);
-						};
-					</script>
-				</div>
-
-				<div class="exemplo">
-					<h2>JQuery</h2>
-					<div id="idCorJQ">Valor Inicial CorJQ</div>
-					<input type="color" />
-					<button class="botaoBordaCor fs-6">FUSÃO</button>
-					<a class="fundoEsticaCor" href="./jquery/">Abrir Exemplos JQuery</a>
+					<script src="./js/jsFuncoes.js" defer></script>
 				</div>
 
 				<div class="exemplo">
@@ -149,4 +202,5 @@
 			</div>
 		</main>
 	</body>
+	<div id="FimPagina" class="oculta">teste</div>
 </html>
