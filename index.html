@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="./css/loadingCirculos.css" />
 		<link rel="stylesheet" href="./css/fundoDoMar.css" />
 		<link rel="icon" type="image/x-icon" href="./img/mkico.jpg" />
+		<script src="./jquery/js/jquery-3.6.1.min.js"></script>
 		<script src="./bootstrap/bootstrap.bundle.min.js"></script>
 		<link href="./bootstrap/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="./css/main.css" />
@@ -22,20 +23,64 @@
 		<main>
 			<div class="grid">
 				<div class="exemplo">
+					<h2>JS</h2>
+					<div id="idAcontece">Valor Inicial</div>
+					<button onclick="fMudaCor()" class="botaoBordaCor fs-6">
+						MudaCor
+					</button>
+					<div id="idJson">Valor Inicial</div>
+					<button onclick="fMostraJson()" class="botaoBordaCor fs-6">
+						Json
+					</button>
+					<script defer>
+						const iAcontece = document.getElementById("idAcontece");
+						iAcontece.innerHTML = "Arrow Func";
+
+						const fMudaCor = () => {
+							iAcontece.style.backgroundColor = CorAleatoria();
+							console.info("Cor: " + iAcontece.style.backgroundColor);
+						};
+						const CorAleatoria = () => {
+							let letters = "0123456789ABCDEF";
+							let color = "#";
+							for (let i = 0; i < 6; i++) {
+								color += letters[Math.floor(Math.random() * 16)];
+							}
+							return color;
+						};
+					</script>
+					<script defer>
+						const iJson = document.getElementById("idJson");
+						let letterM = "M";
+						let letterK = "K";
+						const meuNome = `${letterM}${letterK}`;
+						let jsonA = { Nome: meuNome, Pontos: 9 };
+						let jsonB = { ...jsonA, Pontos: jsonA.Pontos ** 2 };
+
+						const jsonCombo = [jsonA, jsonB];
+
+						iJson.innerHTML = jsonCombo;
+						const fMostraJson = () => {
+							iJson.innerHTML = JSON.stringify(jsonCombo);
+							console.log(jsonCombo);
+						};
+					</script>
+				</div>
+
+				<div class="exemplo">
 					<h2>JQuery</h2>
-					Aqui você pode ver exemplos de uso do JQuery para manipulação de dados
-					do DOM.
-					<a href="./jquery/">
-						<button class="botaoBordaCor">Abrir Exemplo</button>
-					</a>
+					<div id="idCorJQ">Valor Inicial CorJQ</div>
+					<input type="color" />
+					<button class="botaoBordaCor fs-6">FUSÃO</button>
+					<a class="fundoEsticaCor" href="./jquery/">Abrir Exemplos JQuery</a>
 				</div>
 
 				<div class="exemplo">
 					<h2>REST API (JS)</h2>
-					Aqui você poderá ver a execução (GET / POST) do cliente da API (JS do
-					Navegador) acessando um servidor com um JSON.
+					Execução (GET / POST) do cliente da API (JS do Navegador) acessando um
+					servidor com um JSON.
 					<a href="./api_rest/">
-						<button class="botaoBordaCor">Abrir API em em JS</button>
+						<button class="botaoBordaCor">Abrir API em JS</button>
 					</a>
 				</div>
 

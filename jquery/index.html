@@ -28,10 +28,11 @@
 			$nav.css("padding-top", "10px");
 
 			$listas
-				.animate({ width: "-=100" }, 500)
+				.animate({ width: "-=100" }, 200)
 				.fadeOut()
 				.fadeIn("slow")
-				.animate({ width: "+=100" }, 500);
+				.animate({ width: "-=100" }, 200);
+			var $segundo = $nav.find("li");
 		</script>
 	</body>
 </html>
