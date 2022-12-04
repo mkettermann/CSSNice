@@ -23,7 +23,6 @@ main {
 }
 
 h2 {
-	margin-bottom: 20px;
 	color: #000;
 	max-height: 35px;
 	font-weight: 900;
@@ -33,6 +32,7 @@ h2 {
 	padding: 2px;
 	border-radius: 10px;
 	font-size: 1rem;
+	margin-bottom: -2px;
 }
 
 h2:hover {
@@ -48,13 +48,13 @@ h2:hover {
 .grid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 5px;
+	gap: 2px;
 	width: 100%;
-	padding: 5px;
+	padding: 2px;
 }
 
 .exemplo {
-	padding: 5px;
+	padding: 1px;
 	text-align: center;
 	justify-content: center;
 	transition: all 1000ms;
@@ -62,9 +62,9 @@ h2:hover {
 	width: 100%;
 	min-width: 230px;
 	color: #afa;
-	position: relative;
 	border: 1px solid #141;
 	overflow: hidden;
+	overflow-y: auto;
 }
 
 .e1 {

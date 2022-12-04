@@ -14,9 +14,12 @@
 		<link rel="stylesheet" href="./css/fundoDoMar.css" />
 		<link rel="stylesheet" href="./css/jqueryCaixa.css" />
 		<link rel="icon" type="image/x-icon" href="./img/mkico.jpg" />
-		<script src="./jquery/js/jquery-3.6.1.min.js"></script>
-		<script src="./bootstrap/bootstrap.bundle.min.js"></script>
-		<link href="./bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+		<link
+			href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
 		<link rel="stylesheet" href="./css/main.css" />
 		<title>CSS Nice</title>
 	</head>
@@ -64,8 +67,21 @@
 				</div>
 
 				<div class="exemplo">
-					<h2>JQ</h2>
-					<a class="fundoEsticaCor" href="./jquery/">Exemplos JQuery</a>
+					<h2>JQuery Lista Animada</h2>
+					<nav>
+						<li>Item A</li>
+						<li>Item B</li>
+						<li>Item C</li>
+						<li>Item D</li>
+						<li>Item E</li>
+						<li>Item F</li>
+						<li>Item G</li>
+						<li>Item H</li>
+					</nav>
+					<div>
+						Total de Itens na lista acima: <span id="totalItens">-</span>
+					</div>
+					<script src="./js/jqAnimaLista.js" defer></script>
 				</div>
 
 				<div class="exemplo">
@@ -79,14 +95,16 @@
 
 				<div class="exemplo">
 					<h2>REST API (JS)</h2>
-					Execução (GET / POST) do cliente da API (JS do Navegador) acessando um
-					servidor com um JSON.
+					<div>
+						Ação (GET / POST) do cliente da API (JS do Navegador) acessando um
+						servidor com um JSON.
+					</div>
 					<a href="./api_rest/">
 						<button class="botaoBordaCor">Abrir API em JS</button>
 					</a>
 				</div>
 
-				<div class="exemplo">
+				<div class="exemplo" style="overflow-y: hidden">
 					<h2>Fundo do Mar</h2>
 					<a href="./fundoDoMar.html">
 						<div class="fundoDoMar">
@@ -147,7 +165,7 @@
 
 				<a href="./JogoDaMemoria/index.html">
 					<div class="exemplo e1">
-						<h2>Jogo da Memoria</h2>
+						<h2>Jogo da Memoria JS</h2>
 					</div>
 				</a>
 			</div>
