@@ -24,19 +24,40 @@
 		<main>
 			<div class="grid">
 				<div class="exemplo">
-					<h2>Caixa Muda Cor</h2>
+					<h2>Movendo via JQ</h2>
+					<button id="idTrazShow" class="botaoBordaCor fs-6 p-1">
+						Trocar de Lugar com SHOW
+					</button>
+					<div id="idShowParaCa">
+						<b>MK001 Mover objetos usando JQ</b>
+					</div>
+					<div></div>
+					<script>
+						$("#idTrazShow").on("click", () => {
+							let boxDestino = $("#idShowParaCa");
+							let boxOrigem = $("#boxDoShow");
+							let guardaDados = boxDestino.children();
+							boxDestino.empty();
+							boxOrigem.children().appendTo(boxDestino);
+							boxOrigem.append(guardaDados);
+						});
+					</script>
+				</div>
+
+				<div class="exemplo">
+					<h2>Caixa da Mistura Média</h2>
 					<div>Hex Cor: <span id="idHexCorJS"></span></div>
-					<div id="idAcontece">Valor Inicial</div>
+					<div id="idAcontece">Fundo Aleatório</div>
 					<button onclick="fMudaCor()" class="botaoBordaCor fs-6">
 						Gerar Cor Aleatória
 					</button>
-					<div>Hex Cor: <span id="idHexCorJQ"></span></div>
+					<div>Hex Cor: <span id="idHexCorJQ">#00FF00</span></div>
 					<div class="text-center">
 						<input type="color" id="inputCor" value="#00FF00" />
 					</div>
 					<div>
 						<button id="idFusao" class="botaoBordaCor fs-6 p-1">
-							Misturar cores
+							Misturar Cores
 						</button>
 					</div>
 					<script src="./js/caixa.js" defer></script>
@@ -94,12 +115,14 @@
 
 				<div class="exemplo">
 					<h2>Texto 3D</h2>
-					<ul class="t3d_u">
-						<li class="t3d" style="--t3di: 1">S</li>
-						<li class="t3d" style="--t3di: 2">H</li>
-						<li class="t3d" style="--t3di: 3">O</li>
-						<li class="t3d" style="--t3di: 4">W</li>
-					</ul>
+					<div id="boxDoShow">
+						<ul class="t3d_u">
+							<li class="t3d" style="--t3di: 1">S</li>
+							<li class="t3d" style="--t3di: 2">H</li>
+							<li class="t3d" style="--t3di: 3">O</li>
+							<li class="t3d" style="--t3di: 4">W</li>
+						</ul>
+					</div>
 				</div>
 
 				<div class="exemplo">

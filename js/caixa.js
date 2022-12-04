@@ -1,7 +1,8 @@
 var gEventoCaixa = false;
 $(document).ready(() => {
+	$("#idHexCorJQ").text($("#inputCor").val().toUpperCase());
 	$("#inputCor").on("change", () => {
-		$("#idHexCorJQ").text($("#inputCor").val());
+		$("#idHexCorJQ").text($("#inputCor").val().toUpperCase());
 	});
 	$("#idFusao").on("click", () => {
 		if (!gEventoCaixa) {
@@ -18,7 +19,7 @@ $(document).ready(() => {
 					height: "40%",
 				},
 				{
-					duration: 1000,
+					duration: 800,
 					easing: "swing",
 					complete: () => {
 						let vHexCorJQ = $("#inputCor").val();
@@ -49,7 +50,7 @@ $(document).ready(() => {
 								top: yDestino,
 							},
 							{
-								duration: 1000,
+								duration: 800,
 								complete: () => {
 									$(".idCaixaMove").remove();
 
@@ -61,7 +62,7 @@ $(document).ready(() => {
 											opacity: 0,
 										},
 										{
-											duration: 1000,
+											duration: 3200,
 											complete: () => {
 												$(".temp").remove();
 												gEventoCaixa = false;
