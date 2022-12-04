@@ -5,7 +5,7 @@ iAcontece.innerHTML = "Arrow Func";
 const fMudaCor = () => {
 	let corGerada = CorAleatoria();
 	iAcontece.style.backgroundColor = corGerada;
-	console.info("Cor: " + iAcontece.style.backgroundColor);
+	// console.info("Cor: " + iAcontece.style.backgroundColor);
 	iHexCorJS.innerHTML = corGerada;
 };
 
@@ -19,6 +19,10 @@ const CorAleatoria = () => {
 };
 
 const CorMisturada = (cor1, cor2) => {
+	console.log("t");
+	console.log(Hex2Rgb(cor1));
+	console.log(Hex2Rgb(cor2));
+
 	cor1.replace("#", "");
 	cor2.replace("#", "");
 	let mistura = [];
@@ -41,6 +45,16 @@ const Rgb2Hex = (rgb) =>
 		.map((n) => parseInt(n, 10).toString(16).padStart(2, "0"))
 		.join("")}`;
 
+const Hex2Rgb = (hex) => {
+	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	return result
+		? {
+				r: parseInt(result[1], 16),
+				g: parseInt(result[2], 16),
+				b: parseInt(result[3], 16),
+		  }
+		: null;
+};
 const iJson = document.getElementById("idJson");
 let letterM = "M";
 let letterK = "K";
@@ -53,7 +67,7 @@ const jsonCombo = [jsonA, jsonB];
 iJson.innerHTML = jsonCombo;
 const fMostraJson = () => {
 	iJson.innerHTML = JSON.stringify(jsonCombo);
-	console.log(jsonCombo);
+	// console.log(jsonCombo);
 };
 
 fMudaCor();

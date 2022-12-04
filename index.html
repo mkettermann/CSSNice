@@ -24,103 +24,31 @@
 		<main>
 			<div class="grid">
 				<div class="exemplo">
-					<h2>JQ</h2>
+					<h2>Caixa Muda Cor</h2>
+					<div>Hex Cor: <span id="idHexCorJS"></span></div>
+					<div id="idAcontece">Valor Inicial</div>
+					<button onclick="fMudaCor()" class="botaoBordaCor fs-6">
+						Gerar Cor Aleatória
+					</button>
 					<div>Hex Cor: <span id="idHexCorJQ"></span></div>
 					<div class="text-center">
 						<input type="color" id="inputCor" value="#00FF00" />
 					</div>
 					<div>
 						<button id="idFusao" class="botaoBordaCor fs-6 p-1">
-							FUSÃO cores de JS e JQ
+							Misturar cores
 						</button>
 					</div>
-					<script defer>
-						$(document).ready(() => {
-							$("#inputCor").on("change", () => {
-								$("#idHexCorJQ").text($("#inputCor").val());
-							});
-							$("#idFusao").on("click", () => {
-								$("body").append(
-									"<div id='idCaixa' class='temp'><span id='idCaixaInt'></span></span></div>"
-								);
+					<script src="./js/caixa.js" defer></script>
+				</div>
 
-								$("#idCaixa").animate(
-									{
-										bottom: 20,
-										opacity: 1,
-										left: "30%",
-										width: "40%",
-										height: "40%",
-									},
-									{
-										duration: 1000,
-										easing: "swing",
-										complete: () => {
-											let vHexCorJQ = $("#inputCor").val();
-											let vHexCorJS = $("#idAcontece").css("background-color");
-											vHexCorJS = Rgb2Hex(vHexCorJS);
-											$("#idHexCorJQ").append(
-												"<span class='idCaixaMove' style='background-color: " +
-													vHexCorJQ +
-													"'></span>"
-											);
-											$("#idHexCorJS").append(
-												"<span class='idCaixaMove' style='background-color: " +
-													vHexCorJS +
-													"'></span>"
-											);
-											let destino = $("#idCaixa");
-											let xDestino =
-												destino.offset().left +
-												destino.width() / 2 -
-												$("#inputCor").width() / 2;
-											let yDestino =
-												destino.offset().top +
-												destino.height() / 2 -
-												$("#inputCor").width() / 2;
-											$(".idCaixaMove").animate(
-												{
-													left: xDestino,
-													top: yDestino,
-												},
-												{
-													duration: 1000,
-													complete: () => {
-														$(".idCaixaMove").remove();
-
-														let novaCor = CorMisturada(vHexCorJQ, vHexCorJS);
-														console.log(novaCor);
-														$("#idCaixa").css("background", novaCor);
-														$("#idCaixa").animate(
-															{
-																opacity: 0,
-															},
-															{
-																duration: 1000,
-																complete: () => {
-																	$(".temp").remove();
-																},
-															}
-														);
-													},
-												}
-											);
-										},
-									}
-								);
-							});
-						});
-					</script>
+				<div class="exemplo">
+					<h2>JQ</h2>
 					<a class="fundoEsticaCor" href="./jquery/">Exemplos JQuery</a>
 				</div>
 
 				<div class="exemplo">
-					<h2>JS</h2>
-					<div>Hex Cor: <span id="idHexCorJS"></span></div>
-					<div id="idAcontece">Valor Inicial</div>
-					<button onclick="fMudaCor()" class="botaoBordaCor fs-6">
-						MudaCor
-					</button>
+					<h2>JSon</h2>
 					<div id="idJson">Valor Inicial</div>
 					<button onclick="fMostraJson()" class="botaoBordaCor fs-6">
 						To Json
