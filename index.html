@@ -36,7 +36,7 @@
 			<div class="grid">
 				<div class="exemplo">
 					<h2>Carga pela Variavel</h2>
-					<div class="timerOut mt-2" style="--m: 0turn">100%</div>
+					<div class="timerOut mt-2" style="--m: 0turn">0%</div>
 					<button class="btn btn-primary fs-6 p-1 mt-2 btnPlus20">+ 10%</button>
 					<button class="btn btn-danger fs-6 p-1 mt-2 btnMinus20">- 10%</button>
 					<script defer>
@@ -48,10 +48,9 @@
 									.replace("turn", "")
 							);
 							turn >= 1 ? (turn = 1) : (turn += 0.1);
-							$(".timerOut").attr(
-								"style",
-								"--m: " + Number(turn.toFixed(2)) + "turn"
-							);
+							turn = turn.toFixed(2);
+							$(".timerOut").attr("style", "--m: " + turn + "turn");
+							$(".timerOut").text(turn * 100 + "%");
 						}); // click
 						$(".btnMinus20").on("click", () => {
 							let turn = Number(
@@ -61,10 +60,9 @@
 									.replace("turn", "")
 							);
 							turn <= 0 ? (turn = 0) : (turn -= 0.1);
-							$(".timerOut").attr(
-								"style",
-								"--m: " + Number(turn.toFixed(2)) + "turn"
-							);
+							turn = turn.toFixed(2);
+							$(".timerOut").attr("style", "--m: " + turn + "turn");
+							$(".timerOut").text(turn * 100 + "%");
 						}); // click
 					</script>
 				</div>
