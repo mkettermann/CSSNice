@@ -18,8 +18,6 @@
 		<link rel="stylesheet" href="./css/cargaMk.css" />
 		<link rel="stylesheet" href="./css/timerMk.css" />
 		<link rel="icon" type="image/x-icon" href="./img/mkico.jpg" />
-		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
-		<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 		<link
 			href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -32,12 +30,43 @@
 		<title>CSS Nice</title>
 	</head>
 	<body>
+		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 		<main>
 			<div class="grid">
 				<div class="exemplo">
 					<h2>Carga pela Variavel</h2>
-					<br />
-					<div class="timerOut" style="--m: 0turn">100%</div>
+					<div class="timerOut mt-2" style="--m: 0.1turn">100%</div>
+					<button class="btn btn-primary fs-6 p-1 mt-2 btnPlus20">+ 10%</button>
+					<button class="btn btn-danger fs-6 p-1 mt-2 btnMinus20">- 10%</button>
+					<script defer>
+						$(".btnPlus20").on("click", () => {
+							let turn = Number(
+								$(".timerOut")
+									.attr("style")
+									.replace("--m: ", "")
+									.replace("turn", "")
+							);
+							turn >= 1 ? (turn = 1) : (turn += 0.1);
+							$(".timerOut").attr(
+								"style",
+								"--m: " + Number(turn.toFixed(2)) + "turn"
+							);
+						}); // click
+						$(".btnMinus20").on("click", () => {
+							let turn = Number(
+								$(".timerOut")
+									.attr("style")
+									.replace("--m: ", "")
+									.replace("turn", "")
+							);
+							turn <= 0 ? (turn = 0) : (turn -= 0.1);
+							$(".timerOut").attr(
+								"style",
+								"--m: " + Number(turn.toFixed(2)) + "turn"
+							);
+						}); // click
+					</script>
 				</div>
 
 				<div class="exemplo">
@@ -198,7 +227,7 @@
 							</h3>
 						</div>
 					</div>
-					<script>
+					<script defer>
 						const posMouse = document.documentElement;
 						posMouse.addEventListener("mousemove", (e) => {
 							posMouse.style.setProperty("--x", e.clientX + "px");
