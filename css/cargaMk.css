@@ -1,9 +1,15 @@
+:root {
+	--mkEnche: #000000;
+	--mkVazio: #00ff00;
+	--mkTrans: #00000000;
+}
+
 .timerMkOut {
 	display: flex;
-	width: 100px;
-	height: 100px;
+	width: 90px;
+	height: 90px;
 	border-radius: 50%;
-	background: lime;
+	background: var(--mkVazio);
 	margin: auto;
 	align-items: center;
 	justify-content: center;
@@ -16,10 +22,10 @@
 	position: absolute;
 	z-index: 4;
 	padding: 4rem;
-	border: 0px;
+	border: 1px solid black;
 	border-radius: 0px;
-	background: lime;
-	background: linear-gradient(to right, #00ff00ff 50%, #00ff0000 50%);
+	background: var(--mkVazio);
+	background: linear-gradient(to right, var(--mkVazio) 50%, var(--mkTrans) 50%);
 }
 
 .timerMkIn::before {
@@ -29,10 +35,10 @@
 	padding: 4rem;
 	top: 0;
 	left: 0;
-	background: lime;
+	background: var(--mkVazio);
 	background: linear-gradient(
 		to right,
-		#ff0000ff 50%,
+		var(--mkEnche) 50%,
 		/* #0000ffff 50%, */ #ff000000 50%
 	);
 	animation: cargaGirar 5s linear infinite;
@@ -56,17 +62,13 @@
 }
 @keyframes inverter {
 	0% {
-		background: linear-gradient(
-			to right,
-			#00ff00ff 50%,
-			/* #0000ffff 50%, */ #ff000000 50%
-		);
+		background: linear-gradient(to right, var(--mkVazio) 50%, #ff000000 50%);
 	}
 	100% {
 		background: linear-gradient(
 			to right,
-			#00ff0000 50%,
-			/* #0000ffff 50%, */ #ff0000ff 50%
+			var(--mkTrans) 50%,
+			var(--mkEnche) 50%
 		);
 	}
 }
