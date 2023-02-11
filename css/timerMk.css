@@ -6,8 +6,8 @@
 
 .timerOut {
 	display: flex;
-	width: 100px;
-	height: 100px;
+	width: 120px;
+	height: 120px;
 	border: 0px;
 	border-radius: 50%;
 	background: conic-gradient(
