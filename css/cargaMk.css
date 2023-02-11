@@ -48,6 +48,7 @@
 	top: 0;
 	left: 0;
 	background: var(--mkVazio);
+	background: linear-gradient(to right, var(--mkVazio) 50%, #ff000000 50%);
 	animation: inverter 5s linear infinite;
 }
 
@@ -57,9 +58,6 @@
 	}
 }
 @keyframes inverter {
-	0% {
-		background: linear-gradient(to right, var(--mkVazio) 50%, #ff000000 50%);
-	}
 	100% {
 		background: linear-gradient(
 			to right,
