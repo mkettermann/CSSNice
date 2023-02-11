@@ -1,13 +1,13 @@
 :root {
-	--mkEnche: rgb(58, 0, 112);
-	--mkVazio: #00ff00;
+	--mkEnche: #002200;
+	--mkVazio: #009900;
 	--mkTrans: #00000000;
 }
 
 .timerMkOut {
 	display: flex;
-	width: 90px;
-	height: 90px;
+	width: 150px;
+	height: 150px;
 	border: 1px solid var(--mkVazio);
 	border-radius: 50%;
 	background: var(--mkVazio);
@@ -22,8 +22,7 @@
 .timerMkIn {
 	position: absolute;
 	z-index: 4;
-	padding: 4rem;
-	border: 1px solid black;
+	padding: calc(10em);
 	border-radius: 0px;
 	background: var(--mkVazio);
 	background: linear-gradient(to right, var(--mkVazio) 50%, var(--mkTrans) 50%);
@@ -33,15 +32,11 @@
 	content: "";
 	position: absolute;
 	z-index: 3;
-	padding: 4rem;
+	padding: calc(10em);
 	top: 0;
 	left: 0;
 	background: var(--mkVazio);
-	background: linear-gradient(
-		to right,
-		var(--mkEnche) 50%,
-		/* #0000ffff 50%, */ #ff000000 50%
-	);
+	background: linear-gradient(to right, var(--mkEnche) 50%, var(--mkTrans) 50%);
 	animation: cargaGirar 5s linear infinite;
 }
 
@@ -49,10 +44,10 @@
 	content: "";
 	position: absolute;
 	z-index: 5;
-	padding: 4rem;
+	padding: calc(10em);
 	top: 0;
 	left: 0;
-	background: lime;
+	background: var(--mkVazio);
 	animation: inverter 5s linear infinite;
 }
 
