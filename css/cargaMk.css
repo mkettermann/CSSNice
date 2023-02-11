@@ -1,0 +1,72 @@
+.timerMkOut {
+	display: flex;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background: lime;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	color: blue;
+	overflow: hidden;
+}
+
+.timerMkIn {
+	position: absolute;
+	z-index: 4;
+	padding: 4rem;
+	border: 0px;
+	border-radius: 0px;
+	background: lime;
+	background: linear-gradient(to right, #00ff00ff 50%, #00ff0000 50%);
+}
+
+.timerMkIn::before {
+	content: "";
+	position: absolute;
+	z-index: 3;
+	padding: 4rem;
+	top: 0;
+	left: 0;
+	background: lime;
+	background: linear-gradient(
+		to right,
+		#ff0000ff 50%,
+		/* #0000ffff 50%, */ #ff000000 50%
+	);
+	animation: cargaGirar 5s linear infinite;
+}
+
+.timerMkIn::after {
+	content: "";
+	position: absolute;
+	z-index: 5;
+	padding: 4rem;
+	top: 0;
+	left: 0;
+	background: lime;
+	animation: inverter 5s linear infinite;
+}
+
+@keyframes cargaGirar {
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes inverter {
+	0% {
+		background: linear-gradient(
+			to right,
+			#00ff00ff 50%,
+			/* #0000ffff 50%, */ #ff000000 50%
+		);
+	}
+	100% {
+		background: linear-gradient(
+			to right,
+			#00ff0000 50%,
+			/* #0000ffff 50%, */ #ff0000ff 50%
+		);
+	}
+}
