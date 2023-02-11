@@ -57,7 +57,7 @@ h2:hover {
 	padding: 1px;
 	text-align: center;
 	justify-content: center;
-	transition: all 1000ms;
+	transition: all 100ms;
 	aspect-ratio: 1/1;
 	width: 100%;
 	min-width: 230px;
