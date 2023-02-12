@@ -24,22 +24,30 @@
 .timerMkIn {
 	position: absolute;
 	z-index: 4;
-	padding: calc(6em);
+	padding: calc(5.1em);
 	border-radius: 50%;
 	background: var(--mkVazio);
-	background: linear-gradient(to right, var(--mkVazio) 50%, var(--mkTrans) 50%);
+	background: linear-gradient(
+		to right,
+		var(--mkVazio) 49.99%,
+		var(--mkTrans) 50%
+	);
 }
 
 .timerMkIn::before {
 	content: "";
 	position: absolute;
 	z-index: 3;
-	padding: calc(6em);
+	padding: calc(5.1em);
 	border-radius: 50%;
 	top: 0;
 	left: 0;
 	background: var(--mkVazio);
-	background: linear-gradient(to right, var(--mkEnche) 50%, var(--mkTrans) 50%);
+	background: linear-gradient(
+		to right,
+		var(--mkEnche) 49.99%,
+		var(--mkTrans) 50%
+	);
 	animation: cargaGirar 5s linear infinite;
 }
 
@@ -47,12 +55,16 @@
 	content: "";
 	position: absolute;
 	z-index: 5;
-	padding: calc(6em);
+	padding: calc(5.1em);
 	border-radius: 50%;
 	top: 0;
 	left: 0;
 	background: var(--mkVazio);
-	background: linear-gradient(to right, var(--mkVazio) 50%, #ff000000 50%);
+	background: linear-gradient(
+		to right,
+		var(--mkVazio) 49.99%,
+		var(--mkTrans) 50%
+	);
 	animation: inverter 5s linear infinite;
 }
 
@@ -65,7 +77,7 @@
 	100% {
 		background: linear-gradient(
 			to right,
-			var(--mkTrans) 50%,
+			var(--mkTrans) 49.99%,
 			var(--mkEnche) 50%
 		);
 	}
