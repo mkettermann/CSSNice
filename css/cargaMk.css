@@ -24,8 +24,8 @@
 .timerMkIn {
 	position: absolute;
 	z-index: 4;
-	padding: calc(10em);
-	border-radius: 0px;
+	padding: calc(6em);
+	border-radius: 50%;
 	background: var(--mkVazio);
 	background: linear-gradient(to right, var(--mkVazio) 50%, var(--mkTrans) 50%);
 }
@@ -34,7 +34,8 @@
 	content: "";
 	position: absolute;
 	z-index: 3;
-	padding: calc(10em);
+	padding: calc(6em);
+	border-radius: 50%;
 	top: 0;
 	left: 0;
 	background: var(--mkVazio);
@@ -46,7 +47,8 @@
 	content: "";
 	position: absolute;
 	z-index: 5;
-	padding: calc(10em);
+	padding: calc(6em);
+	border-radius: 50%;
 	top: 0;
 	left: 0;
 	background: var(--mkVazio);
