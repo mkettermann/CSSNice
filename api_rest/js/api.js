@@ -28,7 +28,7 @@ function mkGet(destino) {
 		.catch((error) => console.log("error", error));
 }
 
-endereco = "https://mkettermann.github.io/cssnice/api_rest/mk.json";
+endereco = "https://mkettermann.github.io/CSSNice/api_rest/mk.json";
 // GET fetch() json()
 var requestOptions = {
 	method: "GET",
