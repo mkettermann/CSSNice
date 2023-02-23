@@ -1,0 +1,42 @@
+.fundoMoveViaJs {
+	position: relative;
+	width: 100%;
+	height: calc(100% - 2.3rem);
+	background: #000;
+	overflow: hidden;
+}
+.fundoTextoMoveViaJs {
+	position: relative;
+	width: 100%;
+	transform: skewY(345deg) translateY(-500px);
+	animation: animateColor 5s linear infinite;
+}
+
+@keyframes animateColor {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+	100% {
+		filter: hue-rotate(360deg);
+	}
+}
+
+.fundoTextoMoveViaJs h3 {
+	position: relative;
+	width: 100%;
+	font-size: 10em;
+	color: white;
+	pointer-events: none;
+	line-height: 1em;
+	white-space: nowrap;
+	text-shadow: calc(var(--x)) 100px 0 rgba(200, 255, 200, 0.2);
+	transform: translateX(calc(0% - var(--x) * var(--i)));
+}
+.fundoTextoMoveViaJs h3 {
+	color: lime;
+	margin: 0 10px;
+}
+.fundoTextoMoveViaJs h3 span:nth-child(even) {
+	color: transparent;
+	-webkit-text-stroke: 2px white;
+}

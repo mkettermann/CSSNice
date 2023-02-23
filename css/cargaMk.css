@@ -1,0 +1,84 @@
+:root {
+	--mkEnche: #002200;
+	--mkVazio: #009900;
+	--mkTrans: #00000000;
+}
+
+.timerMkOut {
+	display: flex;
+	width: 120px;
+	height: 120px;
+	border: 1px solid var(--mkVazio);
+	box-shadow: 0px 0px 5px 2px var(--mkVazio);
+	text-shadow: 0px 0px 8px black;
+	border-radius: 50%;
+	background: var(--mkVazio);
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	color: blue;
+	overflow: hidden;
+}
+
+.timerMkIn {
+	position: absolute;
+	z-index: 4;
+	padding: calc(5.1em);
+	border-radius: 50%;
+	background: var(--mkVazio);
+	background: linear-gradient(
+		to right,
+		var(--mkVazio) 49.99%,
+		var(--mkTrans) 50%
+	);
+}
+
+.timerMkIn::before {
+	content: "";
+	position: absolute;
+	z-index: 3;
+	padding: calc(5.1em);
+	border-radius: 50%;
+	top: 0;
+	left: 0;
+	background: var(--mkVazio);
+	background: linear-gradient(
+		to right,
+		var(--mkEnche) 49.99%,
+		var(--mkTrans) 50%
+	);
+	animation: cargaGirar 5s linear infinite;
+}
+
+.timerMkIn::after {
+	content: "";
+	position: absolute;
+	z-index: 5;
+	padding: calc(5.1em);
+	border-radius: 50%;
+	top: 0;
+	left: 0;
+	background: var(--mkVazio);
+	background: linear-gradient(
+		to right,
+		var(--mkVazio) 49.99%,
+		var(--mkTrans) 50%
+	);
+	animation: inverter 5s linear infinite;
+}
+
+@keyframes cargaGirar {
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes inverter {
+	100% {
+		background: linear-gradient(
+			to right,
+			var(--mkTrans) 49.99%,
+			var(--mkEnche) 50%
+		);
+	}
+}
