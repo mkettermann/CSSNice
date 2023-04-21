@@ -5,6 +5,7 @@ setInterval(() => {
 		if (e.nextElementSibling.classList.contains("mkSeletorExibe")) {
 			mkSeletorUpdate(e);
 		} else {
+			// CRIAR ELEMENTOS
 			let ePai = e.parentElement;
 			let divMkSeletorBloco = document.createElement("div");
 			divMkSeletorBloco.className = "mkSeletorBloco";
@@ -24,10 +25,14 @@ setInterval(() => {
 			divMkSeletorExibe.appendChild(divMkSeletorExibeFlexinha);
 			// divMkSeletorExibeFlexinha.style.marginLeft =
 			// 	-(divMkSeletorExibeFlexinha.offsetWidth - 2) + "px";
+			let divMkSeletorList = document.createElement("div");
+			divMkSeletorBloco.appendChild(divMkSeletorList);
+			// LISTENERS
+			//divMkSeletorExibe.addEventListener("click", console.log("VaiAbrir"));
 
-			elemento = divMkSeletorExibeFlexinha;
+			elemento = divMkSeletorExibe;
 			mkSeletorUpdate(e);
-			e.classList.add("mkSecreto");
+			//e.classList.add("mkSecreto");
 		}
 	});
 }, 2000);
