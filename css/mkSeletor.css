@@ -1,6 +1,5 @@
 input.mkSeletor {
 	border: 1px solid yellow;
-	background-color: yellow;
 	color: black;
 }
 
@@ -11,8 +10,29 @@ input.mkSeletor {
 }
 
 .mkSeletorExibe {
-	border: 1px solid green;
-	background: green;
+	background-color: yellow;
+	margin-top: 2px;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-align: left;
+	padding: 0px;
+	text-decoration: none;
+	font-weight: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	white-space: nowrap;
+	overflow: hidden;
+	cursor: pointer;
+}
+.mkSeletorExibeSelecionado {
+	width: 100%;
+	background-color: red;
+}
+.mkSeletorExibeFlexinha {
+	background-color: blue;
 }
 
 .mkSecreto {
