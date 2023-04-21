@@ -6,7 +6,6 @@ setInterval(() => {
 			mkSeletorUpdate(e);
 		} else {
 			let ePai = e.parentElement;
-			elemento = e;
 			let divMkSeletorBloco = document.createElement("div");
 			divMkSeletorBloco.className = "mkSeletorBloco";
 			ePai.appendChild(divMkSeletorBloco);
@@ -20,14 +19,15 @@ setInterval(() => {
 			divMkSeletorExibeSelecionado.className = "mkSeletorExibeSelecionado";
 			let divMkSeletorExibeFlexinha = document.createElement("div");
 			divMkSeletorExibeFlexinha.className = "mkSeletorExibeFlexinha";
-			divMkSeletorExibeFlexinha.innerHTML =
-				'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
-
+			divMkSeletorExibeFlexinha.innerHTML = "";
 			divMkSeletorExibe.appendChild(divMkSeletorExibeSelecionado);
 			divMkSeletorExibe.appendChild(divMkSeletorExibeFlexinha);
+			// divMkSeletorExibeFlexinha.style.marginLeft =
+			// 	-(divMkSeletorExibeFlexinha.offsetWidth - 2) + "px";
 
+			elemento = divMkSeletorExibeFlexinha;
 			mkSeletorUpdate(e);
-			// e.classList.add("mkSecreto");
+			e.classList.add("mkSecreto");
 		}
 	});
 }, 2000);
