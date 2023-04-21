@@ -11,7 +11,7 @@ const mkSeletorRenderizar = () => {
 			let divMkSeletorBloco = document.createElement("div");
 			divMkSeletorBloco.className = "mkSeletorBloco";
 			ePai.appendChild(divMkSeletorBloco);
-			let divMkSeletorExibe = document.createElement("div");
+			let divMkSeletorExibe = document.createElement("button");
 			divMkSeletorExibe.className = "mkSeletorExibe";
 			divMkSeletorExibe.style.width = e.offsetWidth + 2 + "px";
 			divMkSeletorExibe.style.height = e.offsetHeight + 2 + "px";
