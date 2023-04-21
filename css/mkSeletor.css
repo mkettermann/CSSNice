@@ -1,20 +1,32 @@
+/* DIVs AGRUPADAS */
 .mkSeletorBloco {
+	--FundoSeletor: #070;
+	--BordaItens: #000;
+	--FundoItens: #fff;
+	--FundoItensHover: linear-gradient(
+		0.25turn,
+		var(--FundoSeletor),
+		transparent
+	);
+	--CorItensHover: #000;
+	--CorItens: var(--BordaItens);
 	--FlexinhaFora: white;
-	--FlexinhaDentro: green;
+	--FlexinhaDentro: var(--FundoSeletor);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
+/* BOTAO e SELECIONADO */
 .mkSeletorExibe {
-	background-color: green;
+	background-color: var(--FundoSeletor);
 	border-radius: 5px;
 
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	text-align: left;
-	padding: 0px;
+	padding: 0px 0px 0px 2px;
 	text-decoration: none;
 	font-weight: 0;
 	font-family: inherit;
@@ -24,9 +36,11 @@
 	overflow: hidden;
 	cursor: pointer;
 }
+
 .mkSeletorExibeSelecionado {
 	width: 100%;
 }
+
 .mkSeletorExibeFlexinha {
 	position: sticky;
 	content: "\A0";
@@ -87,6 +101,26 @@
 	transform: rotate(-45deg) scale(0.7);
 }
 
+/* DROP DOWN */
+.mkSeletorList {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	background: var(--FundoItens);
+	color: var(--CorItens);
+	border: 1px solid var(--BordaItens);
+	border-radius: 5px;
+	cursor: pointer;
+}
+.mkSeletorItem {
+	padding: 0px 0px 0px 1px;
+	border-radius: 3px;
+}
+.mkSeletorItem:hover {
+	background: var(--FundoItensHover);
+}
+
+/* HIDE */
 .mkSecreto {
 	width: 1px;
 	min-width: 0px;

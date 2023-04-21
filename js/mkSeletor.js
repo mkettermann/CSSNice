@@ -1,6 +1,7 @@
-/*TIMER DE BUSCA: CRIA O DROPDOWN e EVENTO LISTENER*/
-var elemento;
-setInterval(() => {
+var ele;
+
+/*CRIA O DROPDOWN e EVENTO LISTENER*/
+const mkSeletorRenderizar = () => {
 	document.querySelectorAll("input.mkSeletor").forEach((e) => {
 		if (e.nextElementSibling.classList.contains("mkSeletorExibe")) {
 			mkSeletorUpdate(e);
@@ -23,19 +24,28 @@ setInterval(() => {
 			divMkSeletorExibeFlexinha.innerHTML = "";
 			divMkSeletorExibe.appendChild(divMkSeletorExibeSelecionado);
 			divMkSeletorExibe.appendChild(divMkSeletorExibeFlexinha);
-			// divMkSeletorExibeFlexinha.style.marginLeft =
-			// 	-(divMkSeletorExibeFlexinha.offsetWidth - 2) + "px";
+
+			// DropDown
 			let divMkSeletorList = document.createElement("div");
+			divMkSeletorList.className = "mkSeletorList";
 			divMkSeletorBloco.appendChild(divMkSeletorList);
+			let seletorArray = JSON.parse(e.getAttribute("data-seletorarray"));
+			seletorArray.forEach((o) => {
+				let divMkSeletorItem = document.createElement("div");
+				divMkSeletorItem.className = "mkSeletorItem";
+				divMkSeletorItem.setAttribute("data-k", o.k);
+				divMkSeletorItem.innerHTML = o.v;
+				divMkSeletorList.appendChild(divMkSeletorItem);
+			});
 			// LISTENERS
 			//divMkSeletorExibe.addEventListener("click", console.log("VaiAbrir"));
 
-			elemento = divMkSeletorExibe;
+			ele = divMkSeletorExibe;
 			mkSeletorUpdate(e);
 			//e.classList.add("mkSecreto");
 		}
 	});
-}, 2000);
+};
 
 /* EVENTO: Atualiza lista*/
 const mkSeletorUpdate = (e) => {
@@ -52,3 +62,9 @@ const mkSeletorUpdate = (e) => {
 		e.nextElementSibling.firstElementChild.innerHTML = "";
 	}
 };
+
+/*INICIALIZA e GERA TIMER de busca por novos elementos*/
+mkSeletorRenderizar();
+setInterval(() => {
+	mkSeletorRenderizar();
+}, 2000);
