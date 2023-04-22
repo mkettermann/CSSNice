@@ -1,4 +1,3 @@
-/* DIVs AGRUPADAS */
 .mkSeletorBloco {
 	--FundoSeletor: #070;
 	--BordaItens: #000;
@@ -10,104 +9,51 @@
 	);
 	--CorItensHover: #000;
 	--CorItens: var(--BordaItens);
-	--FlexinhaFora: white;
-	--FlexinhaDentro: var(--FundoSeletor);
+	--FlexinhaCor: #ccc;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-/* BOTAO e SELECIONADO */
-.mkSeletorExibe {
-	background-color: var(--FundoSeletor);
-	border-radius: 5px;
-
+.mkSeletorPesquisa {
+	position: relative;
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	text-align: left;
-	padding: 0px 0px 0px 2px;
-	text-decoration: none;
-	font-weight: 0;
-	font-family: inherit;
-	font-size: inherit;
-	line-height: inherit;
-	white-space: nowrap;
 	overflow: hidden;
 	cursor: pointer;
+	text-decoration: none;
+	align-items: center;
+	border-radius: 5px;
+	background-color: var(--FundoSeletor);
 }
 
-.mkSeletorExibeSelecionado {
+.mkSeletorInputExibe {
+	background-color: transparent;
 	width: 100%;
 }
 
-.mkSeletorExibeFlexinha {
-	position: sticky;
-	content: "\A0";
-	right: 12px;
-	width: 1px;
-	height: 1px;
-	border: 0px solid transparent;
-	border-radius: 50%;
-}
-.mkSeletorExibeFlexinha::after {
-	content: "";
+.mkSeletorInputExibeArrow {
 	position: absolute;
-	top: 1px;
-	border: 5px solid transparent;
-	border-left: 5px solid var(--FlexinhaDentro);
-	border-bottom: 5px solid var(--FlexinhaDentro);
-	border-radius: 2px;
-	transform: rotate(-45deg) scale(0.5);
-}
-.mkSeletorExibeFlexinha::before {
-	content: "";
-	position: absolute;
-	top: 1px;
-	border: 5px solid transparent;
-	border-left: 5px solid var(--FlexinhaFora);
-	border-bottom: 5px solid var(--FlexinhaFora);
-	border-radius: 3px;
-	transform: rotate(-45deg) scale(0.7);
+	right: 3px;
+	width: 7px;
+	height: 7px;
+	border: 3px solid transparent;
+	border-bottom: 3px solid var(--FlexinhaCor);
+	border-left: 3px solid var(--FlexinhaCor);
+	transform: rotate(-45deg);
+	background-color: var(--FundoSeletor);
+	box-shadow: 0px 0px 1px 2px var(--FundoSeletor);
 }
 
-.mkSeletorExibeFlexinha2 {
-	position: sticky;
-	content: "\A0";
-	right: 12px;
-	width: 1px;
-	height: 1px;
-	border: 0px solid transparent;
-	border-radius: 50%;
-}
-.mkSeletorExibeFlexinha2::after {
-	content: "";
-	position: absolute;
-	top: 6px;
-	border: 5px solid transparent;
-	border-right: 5px solid var(--FlexinhaDentro);
-	border-top: 5px solid var(--FlexinhaDentro);
-	border-radius: 2px;
-	transform: rotate(-45deg) scale(0.5);
-}
-.mkSeletorExibeFlexinha2::before {
-	content: "";
-	position: absolute;
-	top: 6px;
-	border: 5px solid transparent;
-	border-right: 5px solid var(--FlexinhaFora);
-	border-top: 5px solid var(--FlexinhaFora);
-	border-radius: 3px;
-	transform: rotate(-45deg) scale(0.7);
+.mkSeletorBloco:has(input.mkSeletorInputExibe:focus) .mkSeletorInputExibeArrow {
+	transform: rotate(-225deg);
 }
 
-.mkSeletorBloco .mkSeletorExibe:focus .mkSeletorList {
+.mkSeletorBloco:has(input.mkSeletorInputExibe:focus) .mkSeletorList {
 	display: flex;
 }
 
-/* DROP DOWN */
 .mkSeletorList {
-	display: flex;
+	display: none;
 	flex-direction: column;
 	position: absolute;
 	z-index: +9000;

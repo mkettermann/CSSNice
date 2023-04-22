@@ -1,66 +1,88 @@
 var ele;
 
-/*CRIA O DROPDOWN e EVENTO LISTENER*/
+/* CRIA O DROPDOWN por FOCUS */
 const mkSeletorRenderizar = () => {
 	document.querySelectorAll("input.mkSeletor").forEach((e) => {
-		if (e.nextElementSibling.classList.contains("mkSeletorExibe")) {
-			mkSeletorUpdate(e);
-		} else {
-			// CRIAR O BOTAO DE SELECAO
+		if (!e.nextElementSibling.classList.contains("mkSeletorPesquisa")) {
+			// COLETA
 			let ePai = e.parentElement;
 			let ePos = Array.from(ePai.children).indexOf(e);
+			let eLarguraInicial = e.offsetWidth;
+			let eAlturaInicial = e.offsetHeight;
+			// ELEMENTO no BLOCO
 			let divMkSeletorBloco = document.createElement("div");
-			ePai.insertBefore(divMkSeletorBloco, ePai.children[ePos]);
-			divMkSeletorBloco.className = "mkSeletorBloco";
-			let divMkSeletorExibe = document.createElement("button");
-			divMkSeletorExibe.className = "mkSeletorExibe";
-			divMkSeletorExibe.style.width = e.offsetWidth + 2 + "px";
-			divMkSeletorExibe.style.height = e.offsetHeight + 2 + "px";
-			divMkSeletorBloco.appendChild(e);
-			divMkSeletorBloco.appendChild(divMkSeletorExibe);
-			let divMkSeletorExibeSelecionado = document.createElement("div");
-			divMkSeletorExibeSelecionado.className = "mkSeletorExibeSelecionado";
-			let divMkSeletorExibeFlexinha = document.createElement("div");
-			divMkSeletorExibeFlexinha.className = "mkSeletorExibeFlexinha";
-			divMkSeletorExibeFlexinha.innerHTML = "";
-			// LISTA DE ITENS
+			let divMkSeletorPesquisa = document.createElement("div");
+			let divMkSeletorInputExibe = document.createElement("input");
+			let divMkSeletorInputExibeArrow = document.createElement("div");
 			let divMkSeletorList = document.createElement("div");
+			// Nomeando Classes
+			divMkSeletorBloco.className = "mkSeletorBloco";
+			divMkSeletorPesquisa.className = "mkSeletorPesquisa";
+			divMkSeletorInputExibe.className = "mkSeletorInputExibe";
+			divMkSeletorInputExibeArrow.className = "mkSeletorInputExibeArrow";
 			divMkSeletorList.className = "mkSeletorList";
-			divMkSeletorExibe.appendChild(divMkSeletorExibeSelecionado);
-			divMkSeletorExibe.appendChild(divMkSeletorExibeFlexinha);
-			divMkSeletorExibe.appendChild(divMkSeletorList);
-
+			// ORDEM no DOM
+			ePai.insertBefore(divMkSeletorBloco, ePai.children[ePos]);
+			divMkSeletorBloco.appendChild(e);
+			divMkSeletorBloco.appendChild(divMkSeletorPesquisa);
+			divMkSeletorBloco.appendChild(divMkSeletorList);
+			divMkSeletorPesquisa.appendChild(divMkSeletorInputExibe);
+			divMkSeletorPesquisa.appendChild(divMkSeletorInputExibeArrow);
+			// SET Tamanho COM BASE NA Coleta
+			divMkSeletorPesquisa.style.width = eLarguraInicial + "px";
+			divMkSeletorPesquisa.style.height = eAlturaInicial + "px";
+			// GERA CADA ITEM DA LISTA COM BASE NO JSON
 			let seletorArray = JSON.parse(e.getAttribute("data-seletorarray"));
 			seletorArray.forEach((o) => {
 				let divMkSeletorItem = document.createElement("div");
 				divMkSeletorItem.className = "mkSeletorItem";
 				divMkSeletorItem.setAttribute("data-k", o.k);
 				divMkSeletorItem.innerHTML = o.v;
+				divMkSeletorItem.setAttribute(
+					"onmousedown",
+					"mkSeletorSelecionar(this)"
+				);
 				divMkSeletorList.appendChild(divMkSeletorItem);
 			});
-			// LISTENERS
-			//divMkSeletorExibe.addEventListener("click", console.log("VaiAbrir"));
-
-			// POSICIONAMENTO DA LISTA
-			//+ divMkSeletorExibe.offsetHeight
-			divMkSeletorList.style.top = divMkSeletorExibe.offsetTop + "px";
-			divMkSeletorList.style.left = divMkSeletorExibe.offsetLeft - 1 + "px";
-
-			ele = divMkSeletorList;
+			// Seleciona baseado no value do input
 			mkSeletorUpdate(e);
-			//e.classList.add("mkSecreto");
+
+			// TAMANHOS E POSICOES DA LISTA
+			e.classList.add("mkSecreto");
+			let alturaLista =
+				divMkSeletorPesquisa.offsetTop + divMkSeletorPesquisa.offsetHeight;
+			divMkSeletorList.style.top = alturaLista + "px";
+			//divMkSeletorList.style.top = divMkSeletorInputExibe.offsetTop + "px";
+			divMkSeletorList.style.left = divMkSeletorPesquisa.offsetLeft - 1 + "px";
 		}
 	});
 };
 
+const mkSeletorSelecionar = (e) => {
+	let selLimit =
+		e.parentElement.parentElement.firstElementChild.getAttribute(
+			"data-selapenas"
+		);
+	ele = e;
+	e.parentElement.parentElement.firstElementChild.value =
+		e.getAttribute("data-k");
+	e.parentElement.parentElement.children[1].firstElementChild.value =
+		e.innerHTML;
+	if (selLimit > 1) {
+		console.log("Pode Selecionar: " + selLimit);
+		setTimeout(() => {
+			e.parentElement.parentElement.children[1].firstElementChild.focus();
+		}, 1);
+	}
+};
+
 /* EVENTO: Atualiza lista*/
 const mkSeletorUpdate = (e) => {
-	let selLimit = e.getAttribute("data-selapenas");
 	let seletorArray = JSON.parse(e.getAttribute("data-seletorarray"));
 	let naoAchou = true;
 	seletorArray.forEach((o) => {
 		if (e.value == o.k) {
-			e.nextElementSibling.firstElementChild.innerHTML = o.v;
+			e.nextElementSibling.firstElementChild.value = o.v;
 			naoAchou = false;
 		}
 	});
