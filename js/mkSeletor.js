@@ -31,6 +31,18 @@ const mkSeletorRenderizar = () => {
 			// SET Tamanho COM BASE NA Coleta
 			divMkSeletorPesquisa.style.width = eLarguraInicial + "px";
 			divMkSeletorPesquisa.style.height = eAlturaInicial + "px";
+			divMkSeletorInputExibe.setAttribute(
+				"onfocus",
+				"mkSeletorPesquisaFocus(this)"
+			);
+			divMkSeletorInputExibe.setAttribute(
+				"onblur",
+				"mkSeletorPesquisaBlur(this)"
+			);
+			divMkSeletorInputExibe.setAttribute(
+				"oninput",
+				"mkSeletorPesquisaInput(this)"
+			);
 			// GERA CADA ITEM DA LISTA COM BASE NO JSON
 			let seletorArray = JSON.parse(e.getAttribute("data-seletorarray"));
 			seletorArray.forEach((o) => {
@@ -73,6 +85,32 @@ const mkSeletorSelecionar = (e) => {
 			e.parentElement.parentElement.children[1].firstElementChild.focus();
 		}, 1);
 	}
+};
+
+const mkSeletorPesquisaFocus = (e) => {
+	e.value = "";
+	Array.from(e.parentElement.nextElementSibling.children).forEach((el) => {
+		el.style.display = "";
+	});
+};
+
+const mkSeletorPesquisaBlur = (e) => {
+	mkSeletorUpdate(e.parentElement.parentElement.firstElementChild);
+};
+
+const mkSeletorPesquisaInput = (e) => {
+	ele = e.value;
+	Array.from(e.parentElement.nextElementSibling.children).forEach((el) => {
+		let exibe = false;
+		if (el.innerHTML.toLowerCase().match(e.value.toLowerCase())) {
+			exibe = true;
+		}
+		if (exibe) {
+			el.style.display = "";
+		} else {
+			el.style.display = "none";
+		}
+	});
 };
 
 /* EVENTO: Atualiza lista*/
