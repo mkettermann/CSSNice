@@ -63,7 +63,6 @@ const mkSeletorSelecionar = (e) => {
 		e.parentElement.parentElement.firstElementChild.getAttribute(
 			"data-selapenas"
 		);
-	ele = e;
 	e.parentElement.parentElement.firstElementChild.value =
 		e.getAttribute("data-k");
 	e.parentElement.parentElement.children[1].firstElementChild.value =
