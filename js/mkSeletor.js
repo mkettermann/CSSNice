@@ -64,8 +64,8 @@ const mkSeletorRenderizar = () => {
 			let alturaLista =
 				divMkSeletorPesquisa.offsetTop + divMkSeletorPesquisa.offsetHeight;
 			divMkSeletorList.style.top = alturaLista + "px";
-			//divMkSeletorList.style.top = divMkSeletorInputExibe.offsetTop + "px";
 			divMkSeletorList.style.left = divMkSeletorPesquisa.offsetLeft - 1 + "px";
+			divMkSeletorList.style.minWidth = divMkSeletorPesquisa.offsetWidth + "px";
 		}
 	});
 };
