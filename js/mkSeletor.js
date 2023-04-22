@@ -31,6 +31,7 @@ const mkSeletorRenderizar = () => {
 			// SET Tamanho COM BASE NA Coleta
 			divMkSeletorPesquisa.style.width = eLarguraInicial + "px";
 			divMkSeletorPesquisa.style.height = eAlturaInicial + "px";
+			divMkSeletorInputExibe.setAttribute("placeholder", "Filtrar\u{2710}");
 			divMkSeletorInputExibe.setAttribute(
 				"onfocus",
 				"mkSeletorPesquisaFocus(this)"
