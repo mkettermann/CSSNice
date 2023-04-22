@@ -6,11 +6,12 @@ const mkSeletorRenderizar = () => {
 		if (e.nextElementSibling.classList.contains("mkSeletorExibe")) {
 			mkSeletorUpdate(e);
 		} else {
-			// CRIAR ELEMENTOS
+			// CRIAR O BOTAO DE SELECAO
 			let ePai = e.parentElement;
+			let ePos = Array.from(ePai.children).indexOf(e);
 			let divMkSeletorBloco = document.createElement("div");
+			ePai.insertBefore(divMkSeletorBloco, ePai.children[ePos]);
 			divMkSeletorBloco.className = "mkSeletorBloco";
-			ePai.appendChild(divMkSeletorBloco);
 			let divMkSeletorExibe = document.createElement("button");
 			divMkSeletorExibe.className = "mkSeletorExibe";
 			divMkSeletorExibe.style.width = e.offsetWidth + 2 + "px";
@@ -22,13 +23,13 @@ const mkSeletorRenderizar = () => {
 			let divMkSeletorExibeFlexinha = document.createElement("div");
 			divMkSeletorExibeFlexinha.className = "mkSeletorExibeFlexinha";
 			divMkSeletorExibeFlexinha.innerHTML = "";
-			divMkSeletorExibe.appendChild(divMkSeletorExibeSelecionado);
-			divMkSeletorExibe.appendChild(divMkSeletorExibeFlexinha);
-
-			// DropDown
+			// LISTA DE ITENS
 			let divMkSeletorList = document.createElement("div");
 			divMkSeletorList.className = "mkSeletorList";
-			divMkSeletorBloco.appendChild(divMkSeletorList);
+			divMkSeletorExibe.appendChild(divMkSeletorExibeSelecionado);
+			divMkSeletorExibe.appendChild(divMkSeletorExibeFlexinha);
+			divMkSeletorExibe.appendChild(divMkSeletorList);
+
 			let seletorArray = JSON.parse(e.getAttribute("data-seletorarray"));
 			seletorArray.forEach((o) => {
 				let divMkSeletorItem = document.createElement("div");
@@ -40,7 +41,12 @@ const mkSeletorRenderizar = () => {
 			// LISTENERS
 			//divMkSeletorExibe.addEventListener("click", console.log("VaiAbrir"));
 
-			ele = divMkSeletorExibe;
+			// POSICIONAMENTO DA LISTA
+			//+ divMkSeletorExibe.offsetHeight
+			divMkSeletorList.style.top = divMkSeletorExibe.offsetTop + "px";
+			divMkSeletorList.style.left = divMkSeletorExibe.offsetLeft - 1 + "px";
+
+			ele = divMkSeletorList;
 			mkSeletorUpdate(e);
 			//e.classList.add("mkSecreto");
 		}

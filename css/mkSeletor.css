@@ -101,9 +101,9 @@
 	transform: rotate(-45deg) scale(0.7);
 }
 
-/* .mkSeletorBloco:has(.mkSeletorExibe:focus) .mkSeletorList {
+.mkSeletorBloco .mkSeletorExibe:focus .mkSeletorList {
 	display: flex;
-} */
+}
 
 /* DROP DOWN */
 .mkSeletorList {
