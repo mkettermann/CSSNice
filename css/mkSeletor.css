@@ -69,6 +69,7 @@
 	border: 1px solid var(--BordaItens);
 	border-radius: 5px;
 	cursor: pointer;
+	user-select: none;
 }
 .mkSeletorItem {
 	display: flex;
@@ -90,6 +91,7 @@
 .mkSeletorItem[data-s="1"] {
 	color: var(--CorSeletor);
 	background: var(--FundoItensSel);
+	font-weight: 600;
 }
 .mkSeletorItem[data-s="1"] .mkSeletorItemArrow::before {
 	padding: 2px;

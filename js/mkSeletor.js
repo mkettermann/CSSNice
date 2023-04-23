@@ -61,13 +61,6 @@ const mkSeletorRenderizar = () => {
 				divMkSeletorItem.appendChild(divMkSeletorItemTexto);
 				divMkSeletorItem.appendChild(divMkSeletorItemArrow);
 				divMkSeletorList.appendChild(divMkSeletorItem);
-
-				/* Cria a Arrow */
-				if (e.value == o.k) {
-					divMkSeletorItem.setAttribute("data-s", "1");
-				} else {
-					divMkSeletorItem.setAttribute("data-s", "0");
-				}
 			});
 			// Seleciona baseado no value do input
 			mkSeletorUpdate(e);
@@ -98,6 +91,7 @@ const mkSeletorSelecionar = (e) => {
 			e.parentElement.parentElement.children[1].firstElementChild.focus();
 		}, 1);
 	}
+	mkSeletorUpdate(e.parentElement.parentElement.firstElementChild);
 };
 
 const mkSeletorPesquisaFocus = (e) => {
@@ -128,17 +122,38 @@ const mkSeletorPesquisaInput = (e) => {
 
 /* EVENTO: Atualiza lista*/
 const mkSeletorUpdate = (e) => {
+	/* Desmarcar todos mkSeletorItem pra 0 */
+	Array.from(e.nextElementSibling.nextElementSibling.children).forEach((el) => {
+		el.setAttribute("data-s", "0");
+	});
+	/* Exibe Titulo */
 	let seletorArray = JSON.parse(e.getAttribute("data-seletorarray"));
 	let naoAchou = true;
 	seletorArray.forEach((o) => {
 		if (e.value == o.k) {
 			e.nextElementSibling.firstElementChild.value = o.v;
 			naoAchou = false;
+			/* Marcar mkSeletorItem pra 1 onde encontrou */
+			Array.from(e.nextElementSibling.nextElementSibling.children).forEach(
+				(item) => {
+					if (item.getAttribute("data-k") == o.k) {
+						item.setAttribute("data-s", "1");
+					}
+				}
+			);
 		}
 	});
 	if (naoAchou) {
 		e.nextElementSibling.firstElementChild.innerHTML = "";
 	}
+	/* Marcador da linha */
+	Array.from(e.parentElement.nextElementSibling.children).forEach((el) => {
+		if (e.value == o.k) {
+			divMkSeletorItem.setAttribute("data-s", "1");
+		} else {
+			divMkSeletorItem.setAttribute("data-s", "0");
+		}
+	});
 };
 
 /*INICIALIZA e GERA TIMER de busca por novos elementos*/
