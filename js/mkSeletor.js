@@ -1,4 +1,4 @@
-var ele;
+var mkt;
 
 /* CRIA O DROPDOWN por FOCUS */
 const mkSeletorRenderizar = () => {
@@ -150,6 +150,7 @@ const mkSeletorPesquisaInput = (e) => {
 
 /* ATUALIZA Display e Selecionados*/
 const mkSeletorUpdate = (e) => {
+	mkt = e;
 	// Obtem seleções
 	let selecoes = e.value.split(",");
 	/* Desmarcar todos mkSeletorItem pra 0 */

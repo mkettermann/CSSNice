@@ -1,6 +1,7 @@
 .mkSeletorBloco {
 	--FundoSeletor: #070;
 	--FundoSeletorOpaco: #0707;
+	--FundoSeletorDesativado: #777;
 	--BordaItens: #000;
 	--FundoItens: #fff;
 	--FundoItensHover: linear-gradient(
@@ -17,6 +18,17 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: fit-content;
+	margin: auto;
+}
+
+.mkSeletorBloco:has(.mkSeletor[disabled]) {
+	cursor: not-allowed;
+}
+.mkSeletorBloco:has(.mkSeletor[disabled]) .mkSeletorPesquisa {
+	pointer-events: none;
+	opacity: 0.4;
+	--FundoSeletor: var(--FundoSeletorDesativado);
 }
 
 .mkSeletorPesquisa {
