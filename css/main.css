@@ -33,16 +33,19 @@ h2 {
 	font-family: monospace;
 	background-color: rgba(0, 180, 0, 0.8);
 	border: 5px double #030;
-	padding: 2px;
+	padding: 0px;
+	margin: 0px;
 	border-radius: 10px;
 	font-size: 1rem;
-	margin-bottom: -2px;
+
+	position: sticky;
+	top: 1px;
 }
 
 h2:hover {
 	background-color: transparent;
-	border: 5px dotted #050;
-	outline: 2px dashed #aa0;
+	/* border: 5px dotted #050;
+	outline: 2px dashed #aa0; */
 	color: #bfb;
 	cursor: default;
 	text-shadow: -1px 0px 5px #000, 0px 1px 5px #000, 1px 0px 5px #000,
