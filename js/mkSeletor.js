@@ -137,7 +137,9 @@ const mkSeletorPesquisaBlur = (e) => {
 const mkSeletorPesquisaInput = (e) => {
 	Array.from(e.parentElement.nextElementSibling.children).forEach((el) => {
 		let exibe = false;
-		if (el.innerHTML.toLowerCase().match(e.value.toLowerCase())) {
+		if (
+			el.firstElementChild.innerHTML.toLowerCase().match(e.value.toLowerCase())
+		) {
 			exibe = true;
 		}
 		if (exibe) {
@@ -157,14 +159,14 @@ const mkSeletorUpdate = (e) => {
 	Array.from(e.nextElementSibling.nextElementSibling.children).forEach((el) => {
 		el.setAttribute("data-s", "0");
 	});
-	/* Exibe Titulo */
 	let seletorArray = JSON.parse(e.getAttribute("data-seletorarray"));
-	let naoAchou = true;
+	let totAchou = 0;
 	selecoes.forEach((vSelecionado) => {
 		seletorArray.forEach((o) => {
 			if (vSelecionado == o.k) {
+				// Seta Valor do display
 				e.nextElementSibling.firstElementChild.value = o.v;
-				naoAchou = false;
+				totAchou++;
 				/* Marcar mkSeletorItem pra 1 onde encontrou */
 				Array.from(e.nextElementSibling.nextElementSibling.children).forEach(
 					(item) => {
@@ -176,9 +178,12 @@ const mkSeletorUpdate = (e) => {
 			}
 		});
 	});
-	if (naoAchou) {
+	if (totAchou <= 0) {
 		console.log("Não Achou o item selecionado na array de opções.");
 		e.nextElementSibling.firstElementChild.value = "\u{2209}";
+	} else if (totAchou > 1) {
+		e.nextElementSibling.firstElementChild.value =
+			"[" + totAchou + "] Selecionados";
 	}
 };
 
@@ -189,7 +194,5 @@ setInterval(() => {
 }, 2000);
 
 /* Faltando:
-- Disabled: Icone de Input desativado, cursor proibido selecionar
-- Quando seleciona dois itens, precisa exibir o total de selecionados
 - Criar mecânica de Marcar Todos e Desmarcar Todos.
  */
