@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="./css/fundoMoveViaJs.css" />
 		<link rel="stylesheet" href="./css/cargaMk.css" />
 		<link rel="stylesheet" href="./css/timerMk.css" />
-		<link rel="stylesheet" href="./css/mkSeletor.css" />
+		<link rel="stylesheet" href="./lib/mk/mkSel.css" />
 		<link rel="icon" type="image/x-icon" href="./img/mkico.jpg" />
 		<link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="lib/bootstrap/bootstrap-icons.css" />
@@ -30,18 +30,21 @@
 		<main>
 			<div class="grid">
 				<div class="exemplo">
-					<h2>InputSeletor</h2>
+					<h2>mkSel</h2>
 					<label>Selecione:</label>
 					<input
 						name="myInput"
 						value=""
 						size="5"
-						class="mkSeletor"
+						class="mkSel"
 						data-selapenas="3"
-						data-seletorarray='[{"k":"","v":"Selecione"},{"k":1,"v":"Ah"},{"k":2,"v":"Bom, Será que - cabe tudo aqui? Nossa. Doido hein!"},{"k":4,"v":"Deu Ruim!"},{"k":5,"v":"Elefante"},{"k":6,"v":"Farinha"},{"k":7,"v":"Galinha"},{"k":8,"v":"Helicóptero"},{"k":9,"v":"Intervalo"},{"k":10,"v":"Jogo"},{"k":11,"v":"Kettermann"}]'
+						data-selarray='[{"k":"","v":"Selecione"},{"k":1,"v":"Ah"},{"k":2,"v":"Bom, Será que - cabe tudo aqui? Nossa. Doido hein!"},{"k":4,"v":"Deu Ruim!"},{"k":5,"v":"Elefante"},{"k":6,"v":"Farinha"},{"k":7,"v":"Galinha"},{"k":8,"v":"Helicóptero"},{"k":9,"v":"Intervalo"},{"k":10,"v":"Jogo"},{"k":11,"v":"Kettermann"}]'
 					/>
 					<label>Gostou? </label>
-					<script src="./js/mkSeletor.js" defer></script>
+					<br /><br />
+
+					<a href="/mklib.html"><label>MK UI</label></a>
+					<script src="./lib/mk/mkSel.js" defer></script>
 				</div>
 
 				<div class="exemplo">

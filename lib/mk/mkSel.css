@@ -1,4 +1,4 @@
-.mkSeletorBloco {
+.mkSelBloco {
 	--FundoSeletor: #070;
 	--FundoSeletorOpaco: #0707;
 	--FundoSeletorDesativado: #777;
@@ -22,16 +22,16 @@
 	margin: auto;
 }
 
-.mkSeletorBloco:has(.mkSeletor[disabled]) {
+.mkSelBloco:has(.mkSel[disabled]) {
 	cursor: not-allowed;
 }
-.mkSeletorBloco:has(.mkSeletor[disabled]) .mkSeletorPesquisa {
+.mkSelBloco:has(.mkSel[disabled]) .mkSelPesquisa {
 	pointer-events: none;
 	opacity: 0.4;
 	--FundoSeletor: var(--FundoSeletorDesativado);
 }
 
-.mkSeletorPesquisa {
+.mkSelPesquisa {
 	position: relative;
 	display: flex;
 	overflow: hidden;
@@ -41,14 +41,14 @@
 	background-color: var(--FundoSeletor);
 }
 
-.mkSeletorInputExibe {
+.mkSelInputExibe {
 	background-color: transparent;
 	width: 100%;
 	cursor: pointer;
 	padding: 0px 0px 0px 2px;
 }
 
-.mkSeletorInputExibeArrow {
+.mkSelInputExibeArrow {
 	position: absolute;
 	right: 3px;
 	width: 7px;
@@ -62,15 +62,15 @@
 	pointer-events: none;
 }
 
-.mkSeletorBloco:has(input.mkSeletorInputExibe:focus) .mkSeletorInputExibeArrow {
+.mkSelBloco:has(input.mkSelInputExibe:focus) .mkSelInputExibeArrow {
 	transform: rotate(-225deg);
 }
 
-.mkSeletorBloco:has(input.mkSeletorInputExibe:focus) .mkSeletorList {
+.mkSelBloco:has(input.mkSelInputExibe:focus) .mkSelList {
 	display: flex;
 }
 
-.mkSeletorList {
+.mkSelList {
 	display: none;
 	flex-direction: column;
 	position: absolute;
@@ -83,19 +83,19 @@
 	cursor: pointer;
 	user-select: none;
 }
-.mkSeletorItem {
+.mkSelItem {
 	display: flex;
 	position: relative;
 	overflow: hidden;
 	padding: 0px 0px 0px 1px;
 	border-radius: 6px;
 }
-.mkSeletorItem:hover,
-.mkSeletorItem[data-s="1"]:hover {
+.mkSelItem:hover,
+.mkSelItem[data-s="1"]:hover {
 	background: var(--FundoItensHover);
 }
 
-.mkSeletorItemArrow {
+.mkSelItemArrow {
 	position: absolute;
 	right: 0px;
 	pointer-events: none;
@@ -103,12 +103,12 @@
 	align-items: center;
 	height: 100%;
 }
-.mkSeletorItem[data-s="1"] {
+.mkSelItem[data-s="1"] {
 	color: var(--CorSeletor);
 	background: var(--FundoItensSel);
 	font-weight: 600;
 }
-.mkSeletorItem[data-s="1"] .mkSeletorItemArrow::before {
+.mkSelItem[data-s="1"] .mkSelItemArrow::before {
 	display: flex;
 	align-items: center;
 	padding: 0px 4px;
