@@ -31,7 +31,7 @@ const mkSeletorRenderizar = () => {
 			// SET Tamanho COM BASE NA Coleta
 			divMkSeletorPesquisa.style.width = eLarguraInicial + "px";
 			divMkSeletorPesquisa.style.height = eAlturaInicial + "px";
-			divMkSeletorInputExibe.setAttribute("placeholder", "Filtrar\u{2710}");
+			divMkSeletorInputExibe.setAttribute("placeholder", "Filtro \u{1F50D}");
 			divMkSeletorInputExibe.setAttribute(
 				"onfocus",
 				"mkSeletorPesquisaFocus(this)"
@@ -75,23 +75,59 @@ const mkSeletorRenderizar = () => {
 		}
 	});
 };
-
-const mkSeletorSelecionar = (e) => {
-	let selLimit =
-		e.parentElement.parentElement.firstElementChild.getAttribute(
+/* Ao Tentar Selecionar um novo item */
+const mkSeletorSelecionar = (eItem) => {
+	ele = eItem;
+	// Obtem limite de seleções
+	let selLimit = Number(
+		eItem.parentElement.parentElement.firstElementChild.getAttribute(
 			"data-selapenas"
-		);
-	e.parentElement.parentElement.firstElementChild.value =
-		e.getAttribute("data-k");
-	e.parentElement.parentElement.children[1].firstElementChild.value =
-		e.innerHTML;
-	if (selLimit > 1) {
-		console.log("Pode Selecionar: " + selLimit);
+		)
+	);
+	// Obtem seleções
+	let selecoes =
+		eItem.parentElement.parentElement.firstElementChild.value.split(",");
+	// QUANDO O LIMITE é 1
+	if (selLimit == 1) {
+		// Muda valor do input pelo clicado
+		eItem.parentElement.parentElement.firstElementChild.value =
+			eItem.getAttribute("data-k");
+		// Transfere valor para o Display (Exibe)
+		eItem.parentElement.previousElementSibling.firstElementChild.value =
+			eItem.innerHTML;
+	} else if (selLimit > 1) {
+		ele = selecoes;
+		itemK = eItem.getAttribute("data-k");
+		// Verifica se já tem o item clicado, para saber se vai adicionar / remover
+		let jaSelecionado = 0;
+		selecoes.forEach((itemS) => {
+			if (itemS == itemK) jaSelecionado++;
+		});
+		if (jaSelecionado > 0) {
+			// Remove valor
+			selecoes.splice(selecoes.indexOf(itemK), 1);
+		} else {
+			// Verifica se é possivel selecionar mais (Se estiver negativo, pode selecionar infinito)
+			if (selecoes.length < selLimit || selLimit < 0) {
+				// Acrescenta valor
+				selecoes.push(itemK);
+			}
+		}
+		// Limpar seleções vazias
+		selecoes.forEach((item) => {
+			if (item == "") selecoes.splice(selecoes.indexOf(item), 1);
+		});
+
+		// Seta o valor no campo de input
+		eItem.parentElement.parentElement.firstElementChild.value =
+			selecoes.toString();
+
+		// Mantem foco no Display, pois pode selecionar mais de um
 		setTimeout(() => {
-			e.parentElement.parentElement.children[1].firstElementChild.focus();
+			eItem.parentElement.parentElement.children[1].firstElementChild.focus();
 		}, 1);
 	}
-	mkSeletorUpdate(e.parentElement.parentElement.firstElementChild);
+	mkSeletorUpdate(eItem.parentElement.parentElement.firstElementChild);
 };
 
 const mkSeletorPesquisaFocus = (e) => {
@@ -122,6 +158,8 @@ const mkSeletorPesquisaInput = (e) => {
 
 /* EVENTO: Atualiza lista*/
 const mkSeletorUpdate = (e) => {
+	// Obtem seleções
+	let selecoes = e.value.split(",");
 	/* Desmarcar todos mkSeletorItem pra 0 */
 	Array.from(e.nextElementSibling.nextElementSibling.children).forEach((el) => {
 		el.setAttribute("data-s", "0");
@@ -129,22 +167,25 @@ const mkSeletorUpdate = (e) => {
 	/* Exibe Titulo */
 	let seletorArray = JSON.parse(e.getAttribute("data-seletorarray"));
 	let naoAchou = true;
-	seletorArray.forEach((o) => {
-		if (e.value == o.k) {
-			e.nextElementSibling.firstElementChild.value = o.v;
-			naoAchou = false;
-			/* Marcar mkSeletorItem pra 1 onde encontrou */
-			Array.from(e.nextElementSibling.nextElementSibling.children).forEach(
-				(item) => {
-					if (item.getAttribute("data-k") == o.k) {
-						item.setAttribute("data-s", "1");
+	selecoes.forEach((vSelecionado) => {
+		seletorArray.forEach((o) => {
+			if (vSelecionado == o.k) {
+				e.nextElementSibling.firstElementChild.value = o.v;
+				naoAchou = false;
+				/* Marcar mkSeletorItem pra 1 onde encontrou */
+				Array.from(e.nextElementSibling.nextElementSibling.children).forEach(
+					(item) => {
+						if (item.getAttribute("data-k") == o.k) {
+							item.setAttribute("data-s", "1");
+						}
 					}
-				}
-			);
-		}
+				);
+			}
+		});
 	});
 	if (naoAchou) {
-		e.nextElementSibling.firstElementChild.innerHTML = "";
+		console.log("Não Achou o item selecionado na array de opções.");
+		e.nextElementSibling.firstElementChild.value = "\u{2753}";
 	}
 	/* Marcador da linha */
 	Array.from(e.parentElement.nextElementSibling.children).forEach((el) => {
