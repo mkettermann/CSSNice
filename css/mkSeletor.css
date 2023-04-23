@@ -59,15 +59,15 @@
 }
 
 .mkSeletorList {
-	display: flex;
+	display: none;
 	flex-direction: column;
 	position: absolute;
-	z-index: +9000;
+	z-index: +1000;
 	text-align: left;
 	background: var(--FundoItens);
 	color: var(--CorItens);
 	border: 1px solid var(--BordaItens);
-	border-radius: 5px;
+	border-radius: 8px;
 	cursor: pointer;
 	user-select: none;
 }
@@ -76,7 +76,7 @@
 	position: relative;
 	overflow: hidden;
 	padding: 0px 0px 0px 1px;
-	border-radius: 3px;
+	border-radius: 6px;
 }
 .mkSeletorItem:hover,
 .mkSeletorItem[data-s="1"]:hover {
@@ -87,6 +87,9 @@
 	position: absolute;
 	right: 0px;
 	pointer-events: none;
+	display: flex;
+	align-items: center;
+	height: 100%;
 }
 .mkSeletorItem[data-s="1"] {
 	color: var(--CorSeletor);
@@ -94,10 +97,12 @@
 	font-weight: 600;
 }
 .mkSeletorItem[data-s="1"] .mkSeletorItemArrow::before {
-	padding: 2px;
+	display: flex;
+	align-items: center;
+	padding: 0px 4px;
 	color: var(--CorSeletor);
 	background: var(--FundoItensSel);
-	border-radius: 3px;
+	min-height: 100%;
 	content: "\2714";
 }
 

@@ -66,7 +66,7 @@ const mkSeletorRenderizar = () => {
 			mkSeletorUpdate(e);
 
 			// TAMANHOS E POSICOES DA LISTA
-			//e.classList.add("mkSecreto");
+			e.classList.add("mkSecreto");
 			let alturaLista =
 				divMkSeletorPesquisa.offsetTop + divMkSeletorPesquisa.offsetHeight;
 			divMkSeletorList.style.top = alturaLista + "px";
@@ -77,26 +77,19 @@ const mkSeletorRenderizar = () => {
 };
 /* Ao Tentar Selecionar um novo item */
 const mkSeletorSelecionar = (eItem) => {
-	ele = eItem;
+	let ePrincipal = eItem.parentElement.parentElement.firstElementChild;
 	// Obtem limite de seleções
-	let selLimit = Number(
-		eItem.parentElement.parentElement.firstElementChild.getAttribute(
-			"data-selapenas"
-		)
-	);
+	let selLimit = Number(ePrincipal.getAttribute("data-selapenas"));
 	// Obtem seleções
-	let selecoes =
-		eItem.parentElement.parentElement.firstElementChild.value.split(",");
+	let selecoes = ePrincipal.value.split(",");
 	// QUANDO O LIMITE é 1
 	if (selLimit == 1) {
 		// Muda valor do input pelo clicado
-		eItem.parentElement.parentElement.firstElementChild.value =
-			eItem.getAttribute("data-k");
+		ePrincipal.value = eItem.getAttribute("data-k");
 		// Transfere valor para o Display (Exibe)
 		eItem.parentElement.previousElementSibling.firstElementChild.value =
 			eItem.innerHTML;
-	} else if (selLimit > 1) {
-		ele = selecoes;
+	} else if (selLimit > 1 || selLimit < 0) {
 		itemK = eItem.getAttribute("data-k");
 		// Verifica se já tem o item clicado, para saber se vai adicionar / remover
 		let jaSelecionado = 0;
@@ -119,30 +112,29 @@ const mkSeletorSelecionar = (eItem) => {
 		});
 
 		// Seta o valor no campo de input
-		eItem.parentElement.parentElement.firstElementChild.value =
-			selecoes.toString();
+		ePrincipal.value = selecoes.toString();
 
 		// Mantem foco no Display, pois pode selecionar mais de um
 		setTimeout(() => {
-			eItem.parentElement.parentElement.children[1].firstElementChild.focus();
+			eItem.parentElement.previousElementSibling.firstElementChild.focus();
 		}, 1);
 	}
-	mkSeletorUpdate(eItem.parentElement.parentElement.firstElementChild);
+	mkSeletorUpdate(ePrincipal);
 };
 
+/* EVENTO de Pesquisa (FOCUS) */
 const mkSeletorPesquisaFocus = (e) => {
 	e.value = "";
 	Array.from(e.parentElement.nextElementSibling.children).forEach((el) => {
 		el.style.display = "";
 	});
 };
-
+/* EVENTO de Pesquisa (BLUR) */
 const mkSeletorPesquisaBlur = (e) => {
 	mkSeletorUpdate(e.parentElement.parentElement.firstElementChild);
 };
-
+/* EVENTO de Pesquisa (INPUT) */
 const mkSeletorPesquisaInput = (e) => {
-	ele = e.value;
 	Array.from(e.parentElement.nextElementSibling.children).forEach((el) => {
 		let exibe = false;
 		if (el.innerHTML.toLowerCase().match(e.value.toLowerCase())) {
@@ -156,7 +148,7 @@ const mkSeletorPesquisaInput = (e) => {
 	});
 };
 
-/* EVENTO: Atualiza lista*/
+/* ATUALIZA Display e Selecionados*/
 const mkSeletorUpdate = (e) => {
 	// Obtem seleções
 	let selecoes = e.value.split(",");
@@ -185,19 +177,11 @@ const mkSeletorUpdate = (e) => {
 	});
 	if (naoAchou) {
 		console.log("Não Achou o item selecionado na array de opções.");
-		e.nextElementSibling.firstElementChild.value = "\u{2753}";
+		e.nextElementSibling.firstElementChild.value = "\u{2209}";
 	}
-	/* Marcador da linha */
-	Array.from(e.parentElement.nextElementSibling.children).forEach((el) => {
-		if (e.value == o.k) {
-			divMkSeletorItem.setAttribute("data-s", "1");
-		} else {
-			divMkSeletorItem.setAttribute("data-s", "0");
-		}
-	});
 };
 
-/*INICIALIZA e GERA TIMER de busca por novos elementos*/
+/* INICIALIZA e GERA TIMER de busca por novos elementos */
 mkSeletorRenderizar();
 setInterval(() => {
 	mkSeletorRenderizar();
