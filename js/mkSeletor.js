@@ -186,3 +186,9 @@ mkSeletorRenderizar();
 setInterval(() => {
 	mkSeletorRenderizar();
 }, 2000);
+
+/* Faltando:
+- Disabled: Icone de Input desativado, cursor proibido selecionar
+- Quando seleciona dois itens, precisa exibir o total de selecionados
+- Criar mecânica de Marcar Todos e Desmarcar Todos.
+ */
