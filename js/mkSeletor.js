@@ -48,20 +48,32 @@ const mkSeletorRenderizar = () => {
 			let seletorArray = JSON.parse(e.getAttribute("data-seletorarray"));
 			seletorArray.forEach((o) => {
 				let divMkSeletorItem = document.createElement("div");
+				let divMkSeletorItemTexto = document.createElement("span");
+				let divMkSeletorItemArrow = document.createElement("div");
 				divMkSeletorItem.className = "mkSeletorItem";
+				divMkSeletorItemArrow.className = "mkSeletorItemArrow";
 				divMkSeletorItem.setAttribute("data-k", o.k);
-				divMkSeletorItem.innerHTML = o.v;
 				divMkSeletorItem.setAttribute(
 					"onmousedown",
 					"mkSeletorSelecionar(this)"
 				);
+				divMkSeletorItemTexto.innerHTML = o.v;
+				divMkSeletorItem.appendChild(divMkSeletorItemTexto);
+				divMkSeletorItem.appendChild(divMkSeletorItemArrow);
 				divMkSeletorList.appendChild(divMkSeletorItem);
+
+				/* Cria a Arrow */
+				if (e.value == o.k) {
+					divMkSeletorItem.setAttribute("data-s", "1");
+				} else {
+					divMkSeletorItem.setAttribute("data-s", "0");
+				}
 			});
 			// Seleciona baseado no value do input
 			mkSeletorUpdate(e);
 
 			// TAMANHOS E POSICOES DA LISTA
-			e.classList.add("mkSecreto");
+			//e.classList.add("mkSecreto");
 			let alturaLista =
 				divMkSeletorPesquisa.offsetTop + divMkSeletorPesquisa.offsetHeight;
 			divMkSeletorList.style.top = alturaLista + "px";
