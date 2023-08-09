@@ -30,23 +30,35 @@
 		<main>
 			<div class="grid">
 				<div class="exemplo">
-					<h2>mkSel</h2>
-					<label>Selecione:</label>
-					<input
-						name="myInput"
-						value=""
-						size="5"
-						class="mkSel"
-						data-selapenas="3"
-						data-selarray='[{"k":"","v":"Selecione"},{"k":1,"v":"Ah"},{"k":2,"v":"Bom, Será que - cabe tudo aqui? Nossa. Doido hein!"},{"k":4,"v":"Deu Ruim!"},{"k":5,"v":"Elefante"},{"k":6,"v":"Farinha"},{"k":7,"v":"Galinha"},{"k":8,"v":"Helicóptero"},{"k":9,"v":"Intervalo"},{"k":10,"v":"Jogo"},{"k":11,"v":"Kettermann"}]'
-					/>
-					<label>Gostou? </label>
+					<h2>Clip de Transicao CSS+JS</h2>
+					<button
+						class="btn btn-success fs-1 p-1 mt-2 btnPlus20"
+						onclick="repeatClip(1);"
+					>
+						Efeito Clip
+					</button>
 					<br /><br />
-
-					<a href="/mklib.html"><label>MK UI</label></a>
-					<script src="./lib/mk/mkSel.js" defer></script>
+					<script defer>
+						var cContaClip = 1;
+						function clipBody(p) {
+							document
+								.querySelector("body")
+								.setAttribute("style", "clip-path: circle(" + p + "%);");
+						}
+						function repeatClip(c) {
+							if (c) cContaClip = c;
+							clipBody(cContaClip);
+							cContaClip = cContaClip + 3;
+							if (cContaClip < 100) {
+								setTimeout(() => {
+									repeatClip();
+								}, 5);
+							} else {
+								document.querySelector("body").removeAttribute("style");
+							}
+						}
+					</script>
 				</div>
-
 				<div class="exemplo">
 					<h2>ASCII HEX CODES &#x2696;</h2>
 					<table style="text-align: left; width: 100%">
